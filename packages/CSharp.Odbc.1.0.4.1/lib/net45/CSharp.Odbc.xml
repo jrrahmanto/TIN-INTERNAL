@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CSharp.Odbc</name>
+    </assembly>
+    <members>
+        <member name="T:CSharp.Odbc.OdbcHelper">
+            <summary>
+            数据库操作
+            </summary>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.PackingParameters(CSharp.Odbc.Parameter,System.Data.Odbc.OdbcCommand)">
+            <summary>
+            Packing parameters
+            </summary>
+            <param name="parameters">array of OdbcParamters</param>
+            <param name="cmd">OdbcCommand object</param>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.GetParameter(System.String,System.Object,System.Data.Odbc.OdbcCommand)">
+            <summary>
+            Packing parameter object
+            </summary>
+            <param name="paramName">parameter name</param>
+            <param name="paramValue">parameter value</param>
+            <param name="cmd">OdbcCommand object</param>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteConnect(System.String)">
+            <summary>
+            DataBase connection
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteConnect">
+            <summary>
+            DataBase connection
+            </summary>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteNonQuery(System.String,System.String,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand (that returns no resultset) against the database specified in the connection string 
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>an int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteNonQuery(System.String,System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand (that returns no resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>an int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteNonQuery(System.String,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand (that returns no resultset) against the database specified in the connection string 
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>an int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteNonQuery(System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand (that returns no resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>an int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteScalar(System.String,System.String,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand that returns the first column of the first record against the database specified in the connection string 
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>An object that should be converted to the expected type using Convert.To{Type}</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteScalar(System.String,System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand that returns the first column of the first record against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>An object that should be converted to the expected type using Convert.To{Type}</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteScalar(System.String,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand that returns the first column of the first record against the database specified in the connection string 
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>An object that should be converted to the expected type using Convert.To{Type}</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteScalar(System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand that returns the first column of the first record against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>An object that should be converted to the expected type using Convert.To{Type}</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteReader(System.String,System.String,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand that returns a resultset against the database specified in the connection string 
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>A OdbcDataReader containing the results</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteReader(System.String,System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand that returns a resultset against the database specified in the connection string 
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>A OdbcDataReader containing the results</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteReader(System.String,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand that returns a resultset against the database specified in the connection string 
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>A OdbcDataReader containing the results</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.ExecuteReader(System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            Execute a OdbcCommand that returns a resultset against the database specified in the connection string 
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>A OdbcDataReader containing the results</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.FillDataTable(System.String,System.String,System.Data.CommandType)">
+            <summary>
+            DataBase data fill DataTable object
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>DataTable object</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.FillDataTable(System.String,System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            DataBase data fill DataTable object
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>DataTable object</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.FillDataTable(System.String,System.Data.CommandType)">
+            <summary>
+            DataBase data fill DataTable object
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>DataTable object</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.FillDataTable(System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            DataBase data fill DataTable object
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>DataTable object</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.FillDataSet(System.String,System.String,System.Data.CommandType)">
+            <summary>
+            DataBase data fill DataSet object
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>DataSet object</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.FillDataSet(System.String,System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            DataBase data fill DataSet object
+            </summary>
+            <param name="connectionString">a valid connection string for a OdbcConnection</param>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>DataSet object</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.FillDataSet(System.String,System.Data.CommandType)">
+            <summary>
+            DataBase data fill DataSet object
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>DataSet object</returns>
+        </member>
+        <member name="M:CSharp.Odbc.OdbcHelper.FillDataSet(System.String,CSharp.Odbc.Parameter,System.Data.CommandType)">
+            <summary>
+            DataBase data fill DataSet object
+            </summary>
+            <param name="commandText">the stored procedure name or T-SQL command</param>
+            <param name="commandParams">paramters</param>
+            <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
+            <returns>DataSet object</returns>
+        </member>
+        <member name="T:CSharp.Odbc.Parameter">
+            <summary>
+            Sql Parameter
+            </summary>
+        </member>
+    </members>
+</doc>

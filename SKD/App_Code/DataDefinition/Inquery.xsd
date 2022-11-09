@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="InqueryData" targetNamespace="http://tempuri.org/Inquery.xsd" xmlns:mstns="http://tempuri.org/Inquery.xsd" xmlns="http://tempuri.org/Inquery.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SKDConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Public" Name="SKDConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SKDConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AccountReceivableTableAdapter" GeneratorDataComponentClassName="AccountReceivableTableAdapter" Name="AccountReceivable" UserDataComponentName="AccountReceivableTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        a.ProgressID, c.Code AS SellerCode, d.Code AS BuyerCode, a.BusinessDate, a.Volume, a.Amount, a.SellerFee, a.BuyerPaymentDate, a.BuyerPaymentDue, a.BuyerFee
+FROM            SKD.EODTradeProgress AS a INNER JOIN
+                         SKD.TradeFeed AS b ON a.ExchangeRef = b.ExchangeRef INNER JOIN
+                         SKD.ClearingMember AS c ON c.CMID = b.SellerCMID INNER JOIN
+                         SKD.ClearingMember AS d ON d.CMID = b.BuyerCMID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SellerCode" DataSetColumn="SellerCode" />
+              <Mapping SourceColumn="BuyerCode" DataSetColumn="BuyerCode" />
+              <Mapping SourceColumn="BusinessDate" DataSetColumn="BusinessDate" />
+              <Mapping SourceColumn="Volume" DataSetColumn="Volume" />
+              <Mapping SourceColumn="Amount" DataSetColumn="Amount" />
+              <Mapping SourceColumn="SellerFee" DataSetColumn="SellerFee" />
+              <Mapping SourceColumn="BuyerPaymentDate" DataSetColumn="BuyerPaymentDate" />
+              <Mapping SourceColumn="BuyerPaymentDue" DataSetColumn="BuyerPaymentDue" />
+              <Mapping SourceColumn="BuyerFee" DataSetColumn="BuyerFee" />
+              <Mapping SourceColumn="ProgressID" DataSetColumn="ProgressID" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByBusinessDate" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByBusinessDate" GeneratorSourceName="FillByBusinessDate" GetMethodModifier="Public" GetMethodName="GetDataByBusinessDate" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByBusinessDate" UserSourceName="FillByBusinessDate">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        a.ProgressID, c.Code AS SellerCode, d.Code AS BuyerCode, a.BusinessDate, a.Volume, a.Amount, a.SellerFee, a.BuyerPaymentDate, a.BuyerPaymentDue, a.BuyerFee
+FROM            SKD.EODTradeProgress AS a INNER JOIN
+                         SKD.TradeFeed AS b ON a.ExchangeRef = b.ExchangeRef INNER JOIN
+                         SKD.ClearingMember AS c ON c.CMID = b.SellerCMID INNER JOIN
+                         SKD.ClearingMember AS d ON d.CMID = b.BuyerCMID
+WHERE        (CAST(a.BusinessDate AS Date) &gt;= @startDate) AND (CAST(a.BusinessDate AS Date) &lt;= @endDate) OR
+                         (CAST(a.BusinessDate AS Date) &gt;= @startDate) AND (@endDate IS NULL) OR
+                         (CAST(a.BusinessDate AS Date) &lt;= @endDate) AND (@startDate IS NULL) OR
+                         (@endDate IS NULL) AND (@startDate IS NULL)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="startDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="DateTime" Direction="Input" ParameterName="@startDate" Precision="0" ProviderType="DateTime" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="endDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="DateTime" Direction="Input" ParameterName="@endDate" Precision="0" ProviderType="DateTime" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EODTradeProgressTableAdapter" GeneratorDataComponentClassName="EODTradeProgressTableAdapter" Name="EODTradeProgress" UserDataComponentName="EODTradeProgressTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="TIN_KBI.SKD.EODTradeProgress" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillByBusDate" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByBusDate" GeneratorSourceName="FillByBusDate" GetMethodModifier="Public" GetMethodName="GetDataByBusDate" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetDataByBusDate" UserSourceName="FillByBusDate">
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO SKD.EODTradeProgress
+                         (ExchangeRef, TradeTime, BuyerId, SellerId, ProductCode, ContractMonth, Volume, Price, TradeStatus, BusinessDate, ContractSize, ContractType, Amount, SecFundValue, BuyerFee, BuyerInvoice, BuyerPaymentDue, 
+                         BuyerPaymentValue, BuyerPaymentDate, BuyerOutstanding, BuyerFullPayment, BuyerDefault, BuyerCarryForward, BuyerCarryForwardNote, SellerFee, SellerDuePeriod, SellerReceive90Percent, SellerFullReceive, 
+                         SellerDefault, SellerCarryForward, SellerCarryForwardNote, SellerFulfillment, FullDelivery, ForcedClosed, ForcedClosedRef, ForcedClosedRemarks, Done, SettlementSubmittedTime, FullPaymentSubmittedTime, CreatedBy, 
+                         CreatedDate, LastUpdatedBy, LastUpdatedDate)
+VALUES        (@ExchangeRef,@TradeTime,@BuyerId,@SellerId,@ProductCode,@ContractMonth,@Volume,@Price,@TradeStatus,@BusinessDate,@ContractSize,@ContractType,@Amount,@SecFundValue,@BuyerFee,@BuyerInvoice,@BuyerPaymentDue,@BuyerPaymentValue,@BuyerPaymentDate,@BuyerOutstanding,@BuyerFullPayment,@BuyerDefault,@BuyerCarryForward,@BuyerCarryForwardNote,@SellerFee,@SellerDuePeriod,@SellerReceive90Percent,@SellerFullReceive,@SellerDefault,@SellerCarryForward,@SellerCarryForwardNote,@SellerFulfillment,@FullDelivery,@ForcedClosed,@ForcedClosedRef,@ForcedClosedRemarks,@Done,@SettlementSubmittedTime,@FullPaymentSubmittedTime,@CreatedBy,@CreatedDate,@LastUpdatedBy,@LastUpdatedDate)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="ExchangeRef" ColumnName="ExchangeRef" DataSourceName="" DataTypeServer="MediumString" DbType="AnsiString" Direction="Input" ParameterName="@ExchangeRef" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ExchangeRef" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="TradeTime" ColumnName="TradeTime" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@TradeTime" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="TradeTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="BuyerId" ColumnName="BuyerId" DataSourceName="" DataTypeServer="ShortString" DbType="AnsiString" Direction="Input" ParameterName="@BuyerId" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="BuyerId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="SellerId" ColumnName="SellerId" DataSourceName="" DataTypeServer="ShortString" DbType="AnsiString" Direction="Input" ParameterName="@SellerId" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="SellerId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ProductCode" ColumnName="ProductCode" DataSourceName="" DataTypeServer="ShortString" DbType="AnsiString" Direction="Input" ParameterName="@ProductCode" Precision="0" ProviderType="VarChar" Scale="0" Size="20" SourceColumn="ProductCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ContractMonth" ColumnName="ContractMonth" DataSourceName="" DataTypeServer="varchar(6)" DbType="AnsiString" Direction="Input" ParameterName="@ContractMonth" Precision="0" ProviderType="VarChar" Scale="0" Size="6" SourceColumn="ContractMonth" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Volume" ColumnName="Volume" DataSourceName="" DataTypeServer="QuantityValue" DbType="Decimal" Direction="Input" ParameterName="@Volume" Precision="20" ProviderType="Decimal" Scale="5" Size="13" SourceColumn="Volume" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Price" ColumnName="Price" DataSourceName="" DataTypeServer="MoneyValue" DbType="Decimal" Direction="Input" ParameterName="@Price" Precision="24" ProviderType="Decimal" Scale="10" Size="13" SourceColumn="Price" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="TradeStatus" ColumnName="TradeStatus" DataSourceName="" DataTypeServer="Status" DbType="AnsiString" Direction="Input" ParameterName="@TradeStatus" Precision="0" ProviderType="Char" Scale="0" Size="1" SourceColumn="TradeStatus" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="BusinessDate" ColumnName="BusinessDate" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@BusinessDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="BusinessDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ContractSize" ColumnName="ContractSize" DataSourceName="" DataTypeServer="MoneyValue" DbType="Decimal" Direction="Input" ParameterName="@ContractSize" Precision="24" ProviderType="Decimal" Scale="10" Size="13" SourceColumn="ContractSize" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ContractType" ColumnName="ContractType" DataSourceName="" DataTypeServer="MediumString" DbType="AnsiString" Direction="Input" ParameterName="@ContractType" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="ContractType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Amount" ColumnName="Amount" DataSourceName="" DataTypeServer="BigMoneyValue" DbType="Decimal" Direction="Input" ParameterName="@Amount" Precision="30" ProviderType="Decimal" Scale="10" Size="17" SourceColumn="Amount" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="SecFundValue" ColumnName="SecFundValue" DataSourceName="" DataTypeServer="BigMoneyValue" DbType="Decimal" Direction="Input" ParameterName="@SecFundValue" Precision="30" ProviderType="Decimal" Scale="10" Size="17" SourceColumn="SecFundValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="BuyerFee" ColumnName="BuyerFee" DataSourceName="" DataTypeServer="MoneyValue" DbType="Decimal" Direction="Input" ParameterName="@BuyerFee" Precision="24" ProviderType="Decimal" Scale="10" Size="13" SourceColumn="BuyerFee" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BuyerInvoice" ColumnName="BuyerInvoice" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@BuyerInvoice" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="BuyerInvoice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BuyerPaymentDue" ColumnName="BuyerPaymentDue" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@BuyerPaymentDue" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="BuyerPaymentDue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BuyerPaymentValue" ColumnName="BuyerPaymentValue" DataSourceName="" DataTypeServer="BigMoneyValue" DbType="Decimal" Direction="Input" ParameterName="@BuyerPaymentValue" Precision="30" ProviderType="Decimal" Scale="10" Size="17" SourceColumn="BuyerPaymentValue" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BuyerPaymentDate" ColumnName="BuyerPaymentDate" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@BuyerPaymentDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="BuyerPaymentDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BuyerOutstanding" ColumnName="BuyerOutstanding" DataSourceName="" DataTypeServer="BigMoneyValue" DbType="Decimal" Direction="Input" ParameterName="@BuyerOutstanding" Precision="30" ProviderType="Decimal" Scale="10" Size="17" SourceColumn="BuyerOutstanding" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BuyerFullPayment" ColumnName="BuyerFullPayment" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@BuyerFullPayment" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="BuyerFullPayment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BuyerDefault" ColumnName="BuyerDefault" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@BuyerDefault" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="BuyerDefault" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BuyerCarryForward" ColumnName="BuyerCarryForward" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@BuyerCarryForward" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="BuyerCarryForward" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="BuyerCarryForwardNote" ColumnName="BuyerCarryForwardNote" DataSourceName="" DataTypeServer="Description" DbType="AnsiString" Direction="Input" ParameterName="@BuyerCarryForwardNote" Precision="0" ProviderType="VarChar" Scale="0" Size="500" SourceColumn="BuyerCarryForwardNote" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="SellerFee" ColumnName="SellerFee" DataSourceName="" DataTypeServer="MoneyValue" DbType="Decimal" Direction="Input" ParameterName="@SellerFee" Precision="24" ProviderType="Decimal" Scale="10" Size="13" SourceColumn="SellerFee" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SellerDuePeriod" ColumnName="SellerDuePeriod" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@SellerDuePeriod" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="SellerDuePeriod" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SellerReceive90Percent" ColumnName="SellerReceive90Percent" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@SellerReceive90Percent" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="SellerReceive90Percent" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SellerFullReceive" ColumnName="SellerFullReceive" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@SellerFullReceive" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="SellerFullReceive" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SellerDefault" ColumnName="SellerDefault" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@SellerDefault" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="SellerDefault" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SellerCarryForward" ColumnName="SellerCarryForward" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@SellerCarryForward" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="SellerCarryForward" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SellerCarryForwardNote" ColumnName="SellerCarryForwardNote" DataSourceName="" DataTypeServer="Description" DbType="AnsiString" Direction="Input" ParameterName="@SellerCarryForwardNote" Precision="0" ProviderType="VarChar" Scale="0" Size="500" SourceColumn="SellerCarryForwardNote" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SellerFulfillment" ColumnName="SellerFulfillment" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@SellerFulfillment" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="SellerFulfillment" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="FullDelivery" ColumnName="FullDelivery" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@FullDelivery" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FullDelivery" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ForcedClosed" ColumnName="ForcedClosed" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@ForcedClosed" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="ForcedClosed" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ForcedClosedRef" ColumnName="ForcedClosedRef" DataSourceName="" DataTypeServer="LongString" DbType="AnsiString" Direction="Input" ParameterName="@ForcedClosedRef" Precision="0" ProviderType="VarChar" Scale="0" Size="100" SourceColumn="ForcedClosedRef" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="ForcedClosedRemarks" ColumnName="ForcedClosedRemarks" DataSourceName="" DataTypeServer="LongString" DbType="AnsiString" Direction="Input" ParameterName="@ForcedClosedRemarks" Precision="0" ProviderType="VarChar" Scale="0" Size="100" SourceColumn="ForcedClosedRemarks" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Done" ColumnName="Done" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Done" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="Done" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="SettlementSubmittedTime" ColumnName="SettlementSubmittedTime" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@SettlementSubmittedTime" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="SettlementSubmittedTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="FullPaymentSubmittedTime" ColumnName="FullPaymentSubmittedTime" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@FullPaymentSubmittedTime" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="FullPaymentSubmittedTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CreatedBy" ColumnName="CreatedBy" DataSourceName="" DataTypeServer="CreatedBy" DbType="AnsiString" Direction="Input" ParameterName="@CreatedBy" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="CreatedBy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CreatedDate" ColumnName="CreatedDate" DataSourceName="" DataTypeServer="CreatedDate" DbType="DateTime" Direction="Input" ParameterName="@CreatedDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="CreatedDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="LastUpdatedBy" ColumnName="LastUpdatedBy" DataSourceName="" DataTypeServer="LastUpdatedBy" DbType="AnsiString" Direction="Input" ParameterName="@LastUpdatedBy" Precision="0" ProviderType="VarChar" Scale="0" Size="50" SourceColumn="LastUpdatedBy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="LastUpdatedDate" ColumnName="LastUpdatedDate" DataSourceName="" DataTypeServer="LastUpdatedDate" DbType="DateTime" Direction="Input" ParameterName="@LastUpdatedDate" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="LastUpdatedDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        ProgressID, ExchangeRef, TradeTime, BuyerId, SellerId, ProductCode, ContractMonth, Volume, Price, TradeStatus, BusinessDate, ContractSize, ContractType, Amount, SecFundValue, BuyerFee, BuyerInvoice, 
+                         BuyerPaymentDue, BuyerPaymentValue, BuyerPaymentDate, BuyerOutstanding, BuyerFullPayment, BuyerDefault, BuyerCarryForward, BuyerCarryForwardNote, SellerFee, SellerDuePeriod, SellerReceive90Percent, 
+                         SellerFullReceive, SellerDefault, SellerCarryForward, SellerCarryForwardNote, SellerFulfillment, FullDelivery, ForcedClosed, ForcedClosedRef, ForcedClosedRemarks, Done, SettlementSubmittedTime, 
+                         FullPaymentSubmittedTime, CreatedBy, CreatedDate, LastUpdatedBy, LastUpdatedDate
+FROM            SKD.EODTradeProgress
+WHERE        (CAST(ForcedClosed AS Date) &gt;= @startDate) AND (CAST(ForcedClosed AS Date) &lt;= @endDate) OR
+                         (CAST(ForcedClosed AS Date) &gt;= @startDate) AND (@endDate IS NULL) OR
+                         (CAST(ForcedClosed AS Date) &lt;= @endDate) AND (@startDate IS NULL) OR
+                         (@endDate IS NULL) AND (@startDate IS NULL)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="startDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="DateTime" Direction="Input" ParameterName="@startDate" Precision="0" ProviderType="DateTime" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="endDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="DateTime" Direction="Input" ParameterName="@endDate" Precision="0" ProviderType="DateTime" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ProgressID" DataSetColumn="ProgressID" />
+              <Mapping SourceColumn="ExchangeRef" DataSetColumn="ExchangeRef" />
+              <Mapping SourceColumn="TradeTime" DataSetColumn="TradeTime" />
+              <Mapping SourceColumn="BuyerId" DataSetColumn="BuyerId" />
+              <Mapping SourceColumn="SellerId" DataSetColumn="SellerId" />
+              <Mapping SourceColumn="ProductCode" DataSetColumn="ProductCode" />
+              <Mapping SourceColumn="ContractMonth" DataSetColumn="ContractMonth" />
+              <Mapping SourceColumn="Volume" DataSetColumn="Volume" />
+              <Mapping SourceColumn="Price" DataSetColumn="Price" />
+              <Mapping SourceColumn="TradeStatus" DataSetColumn="TradeStatus" />
+              <Mapping SourceColumn="BusinessDate" DataSetColumn="BusinessDate" />
+              <Mapping SourceColumn="ContractSize" DataSetColumn="ContractSize" />
+              <Mapping SourceColumn="ContractType" DataSetColumn="ContractType" />
+              <Mapping SourceColumn="Amount" DataSetColumn="Amount" />
+              <Mapping SourceColumn="SecFundValue" DataSetColumn="SecFundValue" />
+              <Mapping SourceColumn="BuyerFee" DataSetColumn="BuyerFee" />
+              <Mapping SourceColumn="BuyerInvoice" DataSetColumn="BuyerInvoice" />
+              <Mapping SourceColumn="BuyerPaymentDue" DataSetColumn="BuyerPaymentDue" />
+              <Mapping SourceColumn="BuyerPaymentValue" DataSetColumn="BuyerPaymentValue" />
+              <Mapping SourceColumn="BuyerPaymentDate" DataSetColumn="BuyerPaymentDate" />
+              <Mapping SourceColumn="BuyerOutstanding" DataSetColumn="BuyerOutstanding" />
+              <Mapping SourceColumn="BuyerFullPayment" DataSetColumn="BuyerFullPayment" />
+              <Mapping SourceColumn="BuyerDefault" DataSetColumn="BuyerDefault" />
+              <Mapping SourceColumn="BuyerCarryForward" DataSetColumn="BuyerCarryForward" />
+              <Mapping SourceColumn="BuyerCarryForwardNote" DataSetColumn="BuyerCarryForwardNote" />
+              <Mapping SourceColumn="SellerFee" DataSetColumn="SellerFee" />
+              <Mapping SourceColumn="SellerDuePeriod" DataSetColumn="SellerDuePeriod" />
+              <Mapping SourceColumn="SellerReceive90Percent" DataSetColumn="SellerReceive90Percent" />
+              <Mapping SourceColumn="SellerFullReceive" DataSetColumn="SellerFullReceive" />
+              <Mapping SourceColumn="SellerDefault" DataSetColumn="SellerDefault" />
+              <Mapping SourceColumn="SellerCarryForward" DataSetColumn="SellerCarryForward" />
+              <Mapping SourceColumn="SellerCarryForwardNote" DataSetColumn="SellerCarryForwardNote" />
+              <Mapping SourceColumn="SellerFulfillment" DataSetColumn="SellerFulfillment" />
+              <Mapping SourceColumn="FullDelivery" DataSetColumn="FullDelivery" />
+              <Mapping SourceColumn="ForcedClosed" DataSetColumn="ForcedClosed" />
+              <Mapping SourceColumn="ForcedClosedRef" DataSetColumn="ForcedClosedRef" />
+              <Mapping SourceColumn="ForcedClosedRemarks" DataSetColumn="ForcedClosedRemarks" />
+              <Mapping SourceColumn="Done" DataSetColumn="Done" />
+              <Mapping SourceColumn="SettlementSubmittedTime" DataSetColumn="SettlementSubmittedTime" />
+              <Mapping SourceColumn="FullPaymentSubmittedTime" DataSetColumn="FullPaymentSubmittedTime" />
+              <Mapping SourceColumn="CreatedBy" DataSetColumn="CreatedBy" />
+              <Mapping SourceColumn="CreatedDate" DataSetColumn="CreatedDate" />
+              <Mapping SourceColumn="LastUpdatedBy" DataSetColumn="LastUpdatedBy" />
+              <Mapping SourceColumn="LastUpdatedDate" DataSetColumn="LastUpdatedDate" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="InqueryData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="InqueryData" msprop:Generator_UserDSName="InqueryData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AccountReceivable" msprop:Generator_TableClassName="AccountReceivableDataTable" msprop:Generator_TableVarName="tableAccountReceivable" msprop:Generator_TablePropName="AccountReceivable" msprop:Generator_RowDeletingName="AccountReceivableRowDeleting" msprop:Generator_RowChangingName="AccountReceivableRowChanging" msprop:Generator_RowEvHandlerName="AccountReceivableRowChangeEventHandler" msprop:Generator_RowDeletedName="AccountReceivableRowDeleted" msprop:Generator_UserTableName="AccountReceivable" msprop:Generator_RowChangedName="AccountReceivableRowChanged" msprop:Generator_RowEvArgName="AccountReceivableRowChangeEvent" msprop:Generator_RowClassName="AccountReceivableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SellerCode" msprop:Generator_ColumnVarNameInTable="columnSellerCode" msprop:Generator_ColumnPropNameInRow="SellerCode" msprop:Generator_ColumnPropNameInTable="SellerCodeColumn" msprop:Generator_UserColumnName="SellerCode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerCode" msprop:Generator_ColumnVarNameInTable="columnBuyerCode" msprop:Generator_ColumnPropNameInRow="BuyerCode" msprop:Generator_ColumnPropNameInTable="BuyerCodeColumn" msprop:Generator_UserColumnName="BuyerCode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BusinessDate" msprop:Generator_ColumnVarNameInTable="columnBusinessDate" msprop:Generator_ColumnPropNameInRow="BusinessDate" msprop:Generator_ColumnPropNameInTable="BusinessDateColumn" msprop:Generator_UserColumnName="BusinessDate" type="xs:dateTime" />
+              <xs:element name="Volume" msprop:Generator_ColumnVarNameInTable="columnVolume" msprop:Generator_ColumnPropNameInRow="Volume" msprop:Generator_ColumnPropNameInTable="VolumeColumn" msprop:Generator_UserColumnName="Volume" type="xs:decimal" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" />
+              <xs:element name="SellerFee" msprop:Generator_ColumnVarNameInTable="columnSellerFee" msprop:Generator_ColumnPropNameInRow="SellerFee" msprop:Generator_ColumnPropNameInTable="SellerFeeColumn" msprop:Generator_UserColumnName="SellerFee" type="xs:decimal" />
+              <xs:element name="BuyerPaymentDate" msprop:Generator_ColumnVarNameInTable="columnBuyerPaymentDate" msprop:Generator_ColumnPropNameInRow="BuyerPaymentDate" msprop:Generator_ColumnPropNameInTable="BuyerPaymentDateColumn" msprop:Generator_UserColumnName="BuyerPaymentDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BuyerPaymentDue" msprop:Generator_ColumnVarNameInTable="columnBuyerPaymentDue" msprop:Generator_ColumnPropNameInRow="BuyerPaymentDue" msprop:Generator_ColumnPropNameInTable="BuyerPaymentDueColumn" msprop:Generator_UserColumnName="BuyerPaymentDue" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BuyerFee" msprop:Generator_ColumnVarNameInTable="columnBuyerFee" msprop:Generator_ColumnPropNameInRow="BuyerFee" msprop:Generator_ColumnPropNameInTable="BuyerFeeColumn" msprop:Generator_UserColumnName="BuyerFee" type="xs:decimal" />
+              <xs:element name="ProgressID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProgressID" msprop:Generator_ColumnPropNameInRow="ProgressID" msprop:Generator_ColumnPropNameInTable="ProgressIDColumn" msprop:Generator_UserColumnName="ProgressID" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EODTradeProgress" msprop:Generator_TableClassName="EODTradeProgressDataTable" msprop:Generator_TableVarName="tableEODTradeProgress" msprop:Generator_TablePropName="EODTradeProgress" msprop:Generator_RowDeletingName="EODTradeProgressRowDeleting" msprop:Generator_RowChangingName="EODTradeProgressRowChanging" msprop:Generator_RowEvHandlerName="EODTradeProgressRowChangeEventHandler" msprop:Generator_RowDeletedName="EODTradeProgressRowDeleted" msprop:Generator_UserTableName="EODTradeProgress" msprop:Generator_RowChangedName="EODTradeProgressRowChanged" msprop:Generator_RowEvArgName="EODTradeProgressRowChangeEvent" msprop:Generator_RowClassName="EODTradeProgressRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProgressID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnProgressID" msprop:Generator_ColumnPropNameInRow="ProgressID" msprop:Generator_ColumnPropNameInTable="ProgressIDColumn" msprop:Generator_UserColumnName="ProgressID" type="xs:decimal" />
+              <xs:element name="ExchangeRef" msprop:Generator_ColumnVarNameInTable="columnExchangeRef" msprop:Generator_ColumnPropNameInRow="ExchangeRef" msprop:Generator_ColumnPropNameInTable="ExchangeRefColumn" msprop:Generator_UserColumnName="ExchangeRef">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TradeTime" msprop:Generator_ColumnVarNameInTable="columnTradeTime" msprop:Generator_ColumnPropNameInRow="TradeTime" msprop:Generator_ColumnPropNameInTable="TradeTimeColumn" msprop:Generator_UserColumnName="TradeTime" type="xs:dateTime" />
+              <xs:element name="BuyerId" msprop:Generator_ColumnVarNameInTable="columnBuyerId" msprop:Generator_ColumnPropNameInRow="BuyerId" msprop:Generator_ColumnPropNameInTable="BuyerIdColumn" msprop:Generator_UserColumnName="BuyerId">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerId" msprop:Generator_ColumnVarNameInTable="columnSellerId" msprop:Generator_ColumnPropNameInRow="SellerId" msprop:Generator_ColumnPropNameInTable="SellerIdColumn" msprop:Generator_UserColumnName="SellerId">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductCode" msprop:Generator_ColumnVarNameInTable="columnProductCode" msprop:Generator_ColumnPropNameInRow="ProductCode" msprop:Generator_ColumnPropNameInTable="ProductCodeColumn" msprop:Generator_UserColumnName="ProductCode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ContractMonth" msprop:Generator_ColumnVarNameInTable="columnContractMonth" msprop:Generator_ColumnPropNameInRow="ContractMonth" msprop:Generator_ColumnPropNameInTable="ContractMonthColumn" msprop:Generator_UserColumnName="ContractMonth">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Volume" msprop:Generator_ColumnVarNameInTable="columnVolume" msprop:Generator_ColumnPropNameInRow="Volume" msprop:Generator_ColumnPropNameInTable="VolumeColumn" msprop:Generator_UserColumnName="Volume" type="xs:decimal" />
+              <xs:element name="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_UserColumnName="Price" type="xs:decimal" />
+              <xs:element name="TradeStatus" msprop:Generator_ColumnVarNameInTable="columnTradeStatus" msprop:Generator_ColumnPropNameInRow="TradeStatus" msprop:Generator_ColumnPropNameInTable="TradeStatusColumn" msprop:Generator_UserColumnName="TradeStatus">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BusinessDate" msprop:Generator_ColumnVarNameInTable="columnBusinessDate" msprop:Generator_ColumnPropNameInRow="BusinessDate" msprop:Generator_ColumnPropNameInTable="BusinessDateColumn" msprop:Generator_UserColumnName="BusinessDate" type="xs:dateTime" />
+              <xs:element name="ContractSize" msprop:Generator_ColumnVarNameInTable="columnContractSize" msprop:Generator_ColumnPropNameInRow="ContractSize" msprop:Generator_ColumnPropNameInTable="ContractSizeColumn" msprop:Generator_UserColumnName="ContractSize" type="xs:decimal" />
+              <xs:element name="ContractType" msprop:Generator_ColumnVarNameInTable="columnContractType" msprop:Generator_ColumnPropNameInRow="ContractType" msprop:Generator_ColumnPropNameInTable="ContractTypeColumn" msprop:Generator_UserColumnName="ContractType">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" />
+              <xs:element name="SecFundValue" msprop:Generator_ColumnVarNameInTable="columnSecFundValue" msprop:Generator_ColumnPropNameInRow="SecFundValue" msprop:Generator_ColumnPropNameInTable="SecFundValueColumn" msprop:Generator_UserColumnName="SecFundValue" type="xs:decimal" />
+              <xs:element name="BuyerFee" msprop:Generator_ColumnVarNameInTable="columnBuyerFee" msprop:Generator_ColumnPropNameInRow="BuyerFee" msprop:Generator_ColumnPropNameInTable="BuyerFeeColumn" msprop:Generator_UserColumnName="BuyerFee" type="xs:decimal" />
+              <xs:element name="BuyerInvoice" msprop:Generator_ColumnVarNameInTable="columnBuyerInvoice" msprop:Generator_ColumnPropNameInRow="BuyerInvoice" msprop:Generator_ColumnPropNameInTable="BuyerInvoiceColumn" msprop:Generator_UserColumnName="BuyerInvoice" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BuyerPaymentDue" msprop:Generator_ColumnVarNameInTable="columnBuyerPaymentDue" msprop:Generator_ColumnPropNameInRow="BuyerPaymentDue" msprop:Generator_ColumnPropNameInTable="BuyerPaymentDueColumn" msprop:Generator_UserColumnName="BuyerPaymentDue" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BuyerPaymentValue" msprop:Generator_ColumnVarNameInTable="columnBuyerPaymentValue" msprop:Generator_ColumnPropNameInRow="BuyerPaymentValue" msprop:Generator_ColumnPropNameInTable="BuyerPaymentValueColumn" msprop:Generator_UserColumnName="BuyerPaymentValue" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BuyerPaymentDate" msprop:Generator_ColumnVarNameInTable="columnBuyerPaymentDate" msprop:Generator_ColumnPropNameInRow="BuyerPaymentDate" msprop:Generator_ColumnPropNameInTable="BuyerPaymentDateColumn" msprop:Generator_UserColumnName="BuyerPaymentDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BuyerOutstanding" msprop:Generator_ColumnVarNameInTable="columnBuyerOutstanding" msprop:Generator_ColumnPropNameInRow="BuyerOutstanding" msprop:Generator_ColumnPropNameInTable="BuyerOutstandingColumn" msprop:Generator_UserColumnName="BuyerOutstanding" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BuyerFullPayment" msprop:Generator_ColumnVarNameInTable="columnBuyerFullPayment" msprop:Generator_ColumnPropNameInRow="BuyerFullPayment" msprop:Generator_ColumnPropNameInTable="BuyerFullPaymentColumn" msprop:Generator_UserColumnName="BuyerFullPayment" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BuyerDefault" msprop:Generator_ColumnVarNameInTable="columnBuyerDefault" msprop:Generator_ColumnPropNameInRow="BuyerDefault" msprop:Generator_ColumnPropNameInTable="BuyerDefaultColumn" msprop:Generator_UserColumnName="BuyerDefault" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BuyerCarryForward" msprop:Generator_ColumnVarNameInTable="columnBuyerCarryForward" msprop:Generator_ColumnPropNameInRow="BuyerCarryForward" msprop:Generator_ColumnPropNameInTable="BuyerCarryForwardColumn" msprop:Generator_UserColumnName="BuyerCarryForward" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="BuyerCarryForwardNote" msprop:Generator_ColumnVarNameInTable="columnBuyerCarryForwardNote" msprop:Generator_ColumnPropNameInRow="BuyerCarryForwardNote" msprop:Generator_ColumnPropNameInTable="BuyerCarryForwardNoteColumn" msprop:Generator_UserColumnName="BuyerCarryForwardNote" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerFee" msprop:Generator_ColumnVarNameInTable="columnSellerFee" msprop:Generator_ColumnPropNameInRow="SellerFee" msprop:Generator_ColumnPropNameInTable="SellerFeeColumn" msprop:Generator_UserColumnName="SellerFee" type="xs:decimal" />
+              <xs:element name="SellerDuePeriod" msprop:Generator_ColumnVarNameInTable="columnSellerDuePeriod" msprop:Generator_ColumnPropNameInRow="SellerDuePeriod" msprop:Generator_ColumnPropNameInTable="SellerDuePeriodColumn" msprop:Generator_UserColumnName="SellerDuePeriod" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SellerReceive90Percent" msprop:Generator_ColumnVarNameInTable="columnSellerReceive90Percent" msprop:Generator_ColumnPropNameInRow="SellerReceive90Percent" msprop:Generator_ColumnPropNameInTable="SellerReceive90PercentColumn" msprop:Generator_UserColumnName="SellerReceive90Percent" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SellerFullReceive" msprop:Generator_ColumnVarNameInTable="columnSellerFullReceive" msprop:Generator_ColumnPropNameInRow="SellerFullReceive" msprop:Generator_ColumnPropNameInTable="SellerFullReceiveColumn" msprop:Generator_UserColumnName="SellerFullReceive" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SellerDefault" msprop:Generator_ColumnVarNameInTable="columnSellerDefault" msprop:Generator_ColumnPropNameInRow="SellerDefault" msprop:Generator_ColumnPropNameInTable="SellerDefaultColumn" msprop:Generator_UserColumnName="SellerDefault" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SellerCarryForward" msprop:Generator_ColumnVarNameInTable="columnSellerCarryForward" msprop:Generator_ColumnPropNameInRow="SellerCarryForward" msprop:Generator_ColumnPropNameInTable="SellerCarryForwardColumn" msprop:Generator_UserColumnName="SellerCarryForward" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SellerCarryForwardNote" msprop:Generator_ColumnVarNameInTable="columnSellerCarryForwardNote" msprop:Generator_ColumnPropNameInRow="SellerCarryForwardNote" msprop:Generator_ColumnPropNameInTable="SellerCarryForwardNoteColumn" msprop:Generator_UserColumnName="SellerCarryForwardNote" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerFulfillment" msprop:Generator_ColumnVarNameInTable="columnSellerFulfillment" msprop:Generator_ColumnPropNameInRow="SellerFulfillment" msprop:Generator_ColumnPropNameInTable="SellerFulfillmentColumn" msprop:Generator_UserColumnName="SellerFulfillment" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FullDelivery" msprop:Generator_ColumnVarNameInTable="columnFullDelivery" msprop:Generator_ColumnPropNameInRow="FullDelivery" msprop:Generator_ColumnPropNameInTable="FullDeliveryColumn" msprop:Generator_UserColumnName="FullDelivery" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ForcedClosed" msprop:Generator_ColumnVarNameInTable="columnForcedClosed" msprop:Generator_ColumnPropNameInRow="ForcedClosed" msprop:Generator_ColumnPropNameInTable="ForcedClosedColumn" msprop:Generator_UserColumnName="ForcedClosed" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="ForcedClosedRef" msprop:Generator_ColumnVarNameInTable="columnForcedClosedRef" msprop:Generator_ColumnPropNameInRow="ForcedClosedRef" msprop:Generator_ColumnPropNameInTable="ForcedClosedRefColumn" msprop:Generator_UserColumnName="ForcedClosedRef" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ForcedClosedRemarks" msprop:Generator_ColumnVarNameInTable="columnForcedClosedRemarks" msprop:Generator_ColumnPropNameInRow="ForcedClosedRemarks" msprop:Generator_ColumnPropNameInTable="ForcedClosedRemarksColumn" msprop:Generator_UserColumnName="ForcedClosedRemarks" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Done" msprop:Generator_ColumnVarNameInTable="columnDone" msprop:Generator_ColumnPropNameInRow="Done" msprop:Generator_ColumnPropNameInTable="DoneColumn" msprop:Generator_UserColumnName="Done" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SettlementSubmittedTime" msprop:Generator_ColumnVarNameInTable="columnSettlementSubmittedTime" msprop:Generator_ColumnPropNameInRow="SettlementSubmittedTime" msprop:Generator_ColumnPropNameInTable="SettlementSubmittedTimeColumn" msprop:Generator_UserColumnName="SettlementSubmittedTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FullPaymentSubmittedTime" msprop:Generator_ColumnVarNameInTable="columnFullPaymentSubmittedTime" msprop:Generator_ColumnPropNameInRow="FullPaymentSubmittedTime" msprop:Generator_ColumnPropNameInTable="FullPaymentSubmittedTimeColumn" msprop:Generator_UserColumnName="FullPaymentSubmittedTime" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CreatedBy" msprop:Generator_ColumnVarNameInTable="columnCreatedBy" msprop:Generator_ColumnPropNameInRow="CreatedBy" msprop:Generator_ColumnPropNameInTable="CreatedByColumn" msprop:Generator_UserColumnName="CreatedBy">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CreatedDate" msprop:Generator_ColumnVarNameInTable="columnCreatedDate" msprop:Generator_ColumnPropNameInRow="CreatedDate" msprop:Generator_ColumnPropNameInTable="CreatedDateColumn" msprop:Generator_UserColumnName="CreatedDate" type="xs:dateTime" />
+              <xs:element name="LastUpdatedBy" msprop:Generator_ColumnVarNameInTable="columnLastUpdatedBy" msprop:Generator_ColumnPropNameInRow="LastUpdatedBy" msprop:Generator_ColumnPropNameInTable="LastUpdatedByColumn" msprop:Generator_UserColumnName="LastUpdatedBy">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="LastUpdatedDate" msprop:Generator_ColumnVarNameInTable="columnLastUpdatedDate" msprop:Generator_ColumnPropNameInRow="LastUpdatedDate" msprop:Generator_ColumnPropNameInTable="LastUpdatedDateColumn" msprop:Generator_UserColumnName="LastUpdatedDate" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

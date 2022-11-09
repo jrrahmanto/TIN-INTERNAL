@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using WhatsAppApi;
+
+public partial class APIwhatsapp : System.Web.UI.Page
+{
+    //protected void Page_Load(object sender, EventArgs e)
+    //{
+    //    uiBLError.Visible = false;
+    //    if (!Page.IsPostBack)
+    //    {
+
+    //    }
+    //}
+    //protected void uiBtnCancel_Click(object sender, EventArgs e)
+    //{
+    //    Response.Redirect("Default.aspx");
+    //}
+    //protected void uiBtnSave_Click(object sender, EventArgs e)
+    //{
+    //    string from = "089630870658";
+    //    string to = txtPhoneNumber.Text;//Sender Mobile
+    //    string msg = txtMsg.Value;
+        
+    //    WhatsApp wa = new WhatsApp(from, "jkdjtwjkwq2gfkac", "Jujuk", true, true);
+
+
+    //    //var client = new RestClient("https://api.chat-api.com/instance127354/sendMessage?token=jkdjtwjkwq2gfkac");
+    //    //client.Timeout = -1;
+    //    //var requestWa = new RestRequest(Method.POST);
+    //    //requestWa.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+    //    //requestWa.AddParameter("phone", to);
+    //    //requestWa.AddParameter("body", msg);
+    //    //IRestResponse responseWa = client.Execute(requestWa);
+    //}
+}

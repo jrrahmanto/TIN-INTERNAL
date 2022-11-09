@@ -1,0 +1,461 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Reports>
+  <!-- sorted by execution time (longest on top), do not change this -->
+  <!-- New Report for SPPK @KBI Simulation
+  <Report>
+    <Name>DFS</Name>
+    <ReportDescription>Daily Financial Statement</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptNewEODDFS</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>DFS</Name>
+    <ReportDescription>Daily Financial Statement</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptNewEODDFS</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianDFSperTransaksiSeller</Name>
+    <ReportDescription>Rincian DFS per Transaksi Seller</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptEODRincianDFSSeller</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianDFSperTransaksiSeller</Name>
+    <ReportDescription>Rincian DFS per Transaksi Seller</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptEODRincianDFSSeller</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianDFSperTransaksiBuyer</Name>
+    <ReportDescription>Rincian DFS per Transaksi Buyer</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptNewRincianEODDFSBuyer</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianDFSperTransaksiBuyer</Name>
+    <ReportDescription>Rincian DFS per Transaksi Buyer</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptNewRincianEODDFSBuyer</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeRegister</Name>
+    <ReportDescription>Trade Register</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptEODTrdRegisterAll</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeRegister</Name>
+    <ReportDescription>Trade Register</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptEODTradeRegister</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>eDO</Name>
+    <ReportDescription>EDO</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RprEDO</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>NotaPemberitahuanPembayaran</Name>
+    <ReportDescription>Nota Pemberitahuan Pembayaran</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptNewEODNotaPemberitahuan</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>NotaPemberitahuanPembayaran</Name>
+    <ReportDescription>Nota Pemberitahuan Pembayaran</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptNewEODNotaPemberitahuan</Path>
+    <GenerateType>ALL</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ListeDO</Name>
+    <ReportDescription>List eDO</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptEODListeDO</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>-->
+  <Report>
+    <Name>TradeDefault</Name>
+    <ReportDescription>List Trade Default</ReportDescription>
+    <Path>/SPPK_KBI_ReportEOD/RptTradeDefault</Path>
+    <GenerateType>All</GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  <Report>
+    <Name>ClosingBalance</Name>
+    <ReportDescription>List Closing Balance</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptEODClosingBalance</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>SecFun</Name>
+    <ReportDescription>List Security Fund</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptEODSecFund</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>Fee</Name>
+    <ReportDescription>List Fee</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptEODFee</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  
+  <!-- End New Report for SPPK-->
+  <!-- New Report for SPPK
+   <Report>
+    <Name>DFS</Name>
+    <ReportDescription>Daily Financial Statement</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptNewEODDFS</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>DFS</Name>
+    <ReportDescription>Daily Financial Statement</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptNewEODDFS</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianDFSperTransaksiSeller</Name>
+    <ReportDescription>Rincian DFS per Transaksi Seller</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptEODRincianDFSSeller</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianDFSperTransaksiSeller</Name>
+    <ReportDescription>Rincian DFS per Transaksi Seller</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptEODRincianDFSSeller</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianDFSperTransaksiBuyer</Name>
+    <ReportDescription>Rincian DFS per Transaksi Buyer</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptNewRincianEODDFSBuyer</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianDFSperTransaksiBuyer</Name>
+    <ReportDescription>Rincian DFS per Transaksi Buyer</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptNewRincianEODDFSBuyer</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeRegister</Name>
+    <ReportDescription>Trade Register</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptEODTradeRegister</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeRegister</Name>
+    <ReportDescription>Trade Register</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptEODTradeRegister</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+   <Report>
+    <Name>eDO</Name>
+    <ReportDescription>EDO</ReportDescription>
+    <Path>/SPPK_KBI_Report/RprEDO</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>NotaPemberitahuanPembayaran</Name>
+    <ReportDescription>Nota Pemberitahuan Pembayaran</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptNewEODNotaPemberitahuan</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>NotaPemberitahuanPembayaran</Name>
+    <ReportDescription>Nota Pemberitahuan Pembayaran</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptNewEODNotaPemberitahuan</Path>
+    <GenerateType>ALL</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ListeDO</Name>
+    <ReportDescription>List eDO</ReportDescription>
+    <Path>/SPPK_KBI_Report/RptEODListeDO</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>-->
+  <!-- End New Report for SPPK-->
+  <!--
+  <Report>
+    <Name>DailyMarginSummary</Name>
+    <ReportDescription>Daily Margin Summary</ReportDescription>
+    <Path>/SKDReport/RptDailyMarginSummary</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>DailyMarginSummary</Name>
+    <ReportDescription>Daily Margin Summary</ReportDescription>
+    <Path>/SKDReport/RptDailyMarginSummary</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ContractPostingByAccountAndProductListing</Name>
+    <ReportDescription>Contract Posting By Account And Product Listing</ReportDescription>
+    <Path>/SKDReport/RptContractPostingByAccountAndProductListing</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>OpenPositionStatement</Name>
+    <ReportDescription>Open Position Statement</ReportDescription>
+    <Path>/SKDReport/RptOpenPositionStatement</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ClearingMemberBalance</Name>
+    <ReportDescription>Clearing Member Balance Report</ReportDescription>
+    <Path>/SKDReport/RptClearingMemberBalance</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ContractPostingByAccount</Name>
+    <ReportDescription>Contract Posting By Account Listing</ReportDescription>
+    <Path>/SKDReport/RptContractPostingByAccount</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>DailyPositionActivityStatement</Name>
+    <ReportDescription>Daily Position Activity Statement</ReportDescription>
+    <Path>/SKDReport/RptDailyPositionActivityStatement</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ClosedPositionHistoryListing</Name>
+    <ReportDescription>Closed Position History Listing</ReportDescription>
+    <Path>/SKDReport/RptClosedPositionHistoryListing</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>IRCA</Name>
+    <ReportDescription>Interest Rate Cash Adjustment Report</ReportDescription>
+    <Path>/SKDReport/RptIRCA</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeRegistrySummary</Name>
+    <ReportDescription>Trade Registry Summary</ReportDescription>
+    <Path>/SKDReport/RptTradeRegistrySummary</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeRegistryListing</Name>
+    <ReportDescription>Trade Registry Listing</ReportDescription>
+    <Path>/SKDReport/RptTradeRegistryListing</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>DFS</Name>
+    <ReportDescription>Daily Financial Statement</ReportDescription>
+    <Path>/SKDReport/RptDFS</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>DFS</Name>
+    <ReportDescription>Daily Financial Statement</ReportDescription>
+    <Path>/SKDReport/RptDFS</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>FeesListing</Name>
+    <ReportDescription>Fees Listing</ReportDescription>
+    <Path>/SKDReport/RptFeesListing</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>Collateral</Name>
+    <ReportDescription>Collateral Listing</ReportDescription>
+    <Path>/SKDReport/RptCollateral</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>NotaPemberitahuanMarginCall</Name>
+    <ReportDescription>Nota Pemberitahuan Margin Call</ReportDescription>
+    <Path>/SKDReport/RptNotaPemberitahuanMarginCall</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeRegistryListing</Name>
+    <ReportDescription>Trade Registry Listing</ReportDescription>
+    <Path>/SKDReport/RptTradeRegistryListing</Path>
+    <GenerateType>All</GenerateType>\
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ContractPostingByAccount</Name>
+    <ReportDescription>Contract Posting By Account Listing</ReportDescription>
+    <Path>/SKDReport/RptContractPostingByAccount</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ContractPostingByAccountAndProductListing</Name>
+    <ReportDescription>Contract Posting By Account And Product Listing</ReportDescription>
+    <Path>/SKDReport/RptContractPostingByAccountAndProductListing</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>OpenPositionStatement</Name>
+    <ReportDescription>Open Position Statement</ReportDescription>
+    <Path>/SKDReport/RptOpenPositionStatement</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ClearingMemberBalance</Name>
+    <ReportDescription>Clearing Member Balance Report</ReportDescription>
+    <Path>/SKDReport/RptClearingMemberBalance</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ClearingHouseBalance</Name>
+    <ReportDescription>Clearing House Balance Report</ReportDescription>
+    <Path>/SKDReport/RptClearingHouseBalance</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>FeesListing</Name>
+    <ReportDescription>Fees Listing</ReportDescription>
+    <Path>/SKDReport/RptFeesListing</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>IRCA</Name>
+    <ReportDescription>Interest Rate Cash Adjustment Report</ReportDescription>
+    <Path>/SKDReport/RptIRCA</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report> 
+
+  <Report>
+    <Name>Invoice</Name>
+    <ReportDescription>Invoice</ReportDescription>
+    <Path>/SKDReport/RptInvoice</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOM</Type>
+  </Report>
+  <Report>
+    <Name>TaxInvoice</Name>
+    <ReportDescription>Tax Invoice</ReportDescription>
+    <Path>/SKDReport/RptTaxInvoice</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOM</Type>
+  </Report>
+  <Report>
+    <Name>Penalty</Name>
+    <ReportDescription>Penalty Statement</ReportDescription>
+    <Path>/SKDReport/RptPenalty</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOM</Type>
+  </Report>
+
+  <Report>
+    <Name>Clearing Member Profit Loss</Name>
+    <ReportDescription>Clearing Member Profit Loss</ReportDescription>
+    <Path>/SKDReport/RptClearingMemberProfitLoss</Path>
+    <GenerateType></GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  <Report>
+    <Name>Cash Out Excess</Name>
+    <ReportDescription>Cash Out Excess</ReportDescription>
+    <Path>/SKDReport/RptCashOutExcess</Path>
+    <GenerateType></GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  <Report>
+    <Name>Clearing Member Top Gainer</Name>
+    <ReportDescription>Clearing Member Top Gainer</ReportDescription>
+    <Path>/SKDReport/RptClearingMemberTopGainer</Path>
+    <GenerateType></GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  <Report>
+    <Name>Clearing Member Top Loser</Name>
+    <ReportDescription>Clearing Member Top Loser</ReportDescription>
+    <Path>/SKDReport/RptClearingMemberTopLoser</Path>
+    <GenerateType></GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  <Report>
+    <Name>Investor Top Gainer</Name>
+    <ReportDescription>Investor Top Gainer</ReportDescription>
+    <Path>/SKDReport/RptInvestorTopGainer</Path>
+    <GenerateType></GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  <Report>
+    <Name>Investor Top Loser</Name>
+    <ReportDescription>Investor Top Loser</ReportDescription>
+    <Path>/SKDReport/RptInvestorTopLoser</Path>
+    <GenerateType></GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  <Report>
+    <Name>Exception</Name>
+    <ReportDescription>Exception</ReportDescription>
+    <Path>/SKDReport/RptException</Path>
+    <GenerateType></GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  <Report>
+    <Name>Settlemen Price Movement</Name>
+    <ReportDescription>Settlemen Price Movement</ReportDescription>
+    <Path>/SKDReport/RptSettlementPriceMovement</Path>
+    <GenerateType></GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  <Report>
+    <Name>Margin Summary</Name>
+    <ReportDescription>Margin Summary</ReportDescription>
+    <Path>/SKDReport/RptDailyMarginSummary</Path>
+    <GenerateType></GenerateType>
+    <Type>Dashboard</Type>
+  </Report>
+  -->
+</Reports>

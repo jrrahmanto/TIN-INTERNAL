@@ -1,0 +1,72 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="DefaultPage.master.cs" Inherits="DefaultPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Sistem Kliring Derivatif</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="Styles/StyleSheet.css" rel="stylesheet" type="text/css" /> 
+</head>
+    <body>
+        <form id="form1" runat="server">
+        <table cellpadding="0" cellspacing="0" style="width:100%;">
+            <tr>
+                <td class="header" colspan="2">
+                    <table  cellpadding="0" cellspacing="0" width="100%" class="table-contain">
+                        <tr>
+                             <td  class="header">
+            <asp:Image ID="Image1" runat="server" ImageUrl="~/images/logo.gif" />
+              </td>
+        <td colspan="2" align="right" class="header">
+            <asp:Image ID="Image2" runat="server" ImageUrl="~/images/header-right.jpg" />
+              </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color: #3D7EBC">
+                    &nbsp;</td>
+                <td class="login-info">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table runat="server" id="tblMain" style="border: 1px solid #C0C0C0; width:100%;" cellpadding="0" 
+                        cellspacing="0">
+                        <tr>
+                            <td class="header_title"
+                                
+                                style="border-width: 1px; border-color: #C0C0C0; border-bottom-style: solid">
+                                <asp:SiteMapPath ID="HeaderTitleNode" runat="server" ParentLevelsDisplayed="0" 
+                                    PathDirection="CurrentToRoot">
+                                </asp:SiteMapPath>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1"  runat="server">
+                    </asp:ContentPlaceHolder>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        
+        </form>
+        
+    </body>
+
+</html>
+

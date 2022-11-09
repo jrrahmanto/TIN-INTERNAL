@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WithdrawalSellerData" targetNamespace="http://tempuri.org/WithdrawalSellerData.xsd" xmlns:mstns="http://tempuri.org/WithdrawalSellerData.xsd" xmlns="http://tempuri.org/WithdrawalSellerData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SKDConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Public" Name="SKDConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SKDConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="WithDrawalTableAdapter" GeneratorDataComponentClassName="WithDrawalTableAdapter" Name="WithDrawal" UserDataComponentName="WithDrawalTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="SELECT a.BusinessDate, d.Code AS Participant, d.Name, d.CMBankName AS BankName, d.CMAccountNo AS AccountNo, a.ExchangeRef, a.SellerId AS SellerAccount, CASE WHEN a.SellerReceive90Percent IS NOT NULL AND a.SellerFullReceive IS NULL THEN (SELECT (SELECT NumericValue FROM SKD.Parameter WHERE Code = 'Part2Pct') / 100) * a.Amount WHEN a.SellerReceive90Percent IS NOT NULL AND a.SellerFullReceive IS NOT NULL THEN (SELECT (SELECT NumericValue FROM SKD.Parameter WHERE Code = 'Part1Pct') / 100) * a.Amount ELSE 0 END AS Amount FROM SKD.EODTradeProgress AS a INNER JOIN SKD.Investor AS b ON a.SellerId = b.Code INNER JOIN SKD.ExchangeMember AS c ON b.EMID = c.EMID INNER JOIN SKD.ClearingMember AS d ON c.RegisteredCMID = d.CMID" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT        BusinessDate, Participant, Name, BankName, AccountNo, ExchangeRef, SellerAccount, Amount
+FROM            (SELECT        a.BusinessDate, d.Code AS Participant, d.Name, d.CMBankName AS BankName, d.CMAccountNo AS AccountNo, a.ExchangeRef, a.SellerId AS SellerAccount, CASE WHEN a.SellerReceive90Percent IS NOT NULL AND
+                                                     a.SellerFullReceive IS NULL THEN
+                                                        (SELECT        (SELECT        NumericValue
+                                                                                     FROM            SKD.Parameter
+                                                                                     WHERE        Code = 'Part2Pct') / 100) * a.Amount WHEN a.SellerReceive90Percent IS NOT NULL AND a.SellerFullReceive IS NOT NULL THEN
+                                                        (SELECT        (SELECT        NumericValue
+                                                                                     FROM            SKD.Parameter
+                                                                                     WHERE        Code = 'Part1Pct') / 100) * a.Amount ELSE 0 END AS Amount
+                          FROM            SKD.EODTradeProgress AS a INNER JOIN
+                                                    SKD.Investor AS b ON a.SellerId = b.Code INNER JOIN
+                                                    SKD.ExchangeMember AS c ON b.EMID = c.EMID INNER JOIN
+                                                    SKD.ClearingMember AS d ON c.RegisteredCMID = d.CMID) AS wdw
+ORDER BY Participant</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SellerAccount" DataSetColumn="SellerAccount" />
+              <Mapping SourceColumn="AccountNo" DataSetColumn="AccountNo" />
+              <Mapping SourceColumn="BankName" DataSetColumn="BankName" />
+              <Mapping SourceColumn="Amount" DataSetColumn="Amount" />
+              <Mapping SourceColumn="BusinessDate" DataSetColumn="BusinessDate" />
+              <Mapping SourceColumn="Participant" DataSetColumn="Participant" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="ExchangeRef" DataSetColumn="ExchangeRef" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="SELECT a.BusinessDate, d.Code AS Participant, d.Name, d.CMBankName AS BankName, d.CMAccountNo AS AccountNo , a.ExchangeRef, a.SellerId AS SellerAccount , CASE WHEN a.SellerReceive90Percent IS NOT NULL AND a.SellerFullReceive IS NULL THEN (SELECT (SELECT NumericValue FROM SKD.Parameter WHERE Code = 'Part2Pct') / 100) * a.Amount WHEN a.SellerReceive90Percent IS NOT NULL AND a.SellerFullReceive IS NOT NULL THEN (SELECT (SELECT NumericValue FROM SKD.Parameter WHERE Code = 'Part1Pct') / 100) * a.Amount ELSE 0 END AS Amount FROM skd.EODTradeProgress a INNER JOIN skd.Investor b ON a.SellerId = b.Code INNER JOIN skd.ExchangeMember c ON b.EMID = c.EMID INNER JOIN skd.ClearingMember d ON c.RegisteredCMID = d.CMID" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByBusinessDate" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataByBusinessDate" GeneratorSourceName="FillByBusinessDate" GetMethodModifier="Public" GetMethodName="GetDataByBusinessDate" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataByBusinessDate" UserSourceName="FillByBusinessDate">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select wdw.*
+from
+    (select a.BusinessDate, d.Code as Participant, d.Name, d.CMBankName as BankName, d.CMAccountNo as AccountNo
+    , a.ExchangeRef, a.SellerId as SellerAccount
+    , case
+        when a.SellerReceive90Percent is not null and a.SellerFullReceive is null
+            then (SELECT (SELECT NumericValue FROM SKD.Parameter WHERE Code = 'Part2Pct') / 100) * a.Amount
+        when a.SellerReceive90Percent is not null and a.SellerFullReceive is not null
+            then (SELECT (SELECT NumericValue FROM SKD.Parameter WHERE Code = 'Part1Pct') / 100) * a.Amount
+        else 0
+    end as Amount
+    from skd.EODTradeProgress a
+    inner join skd.Investor b on a.SellerId = b.Code
+    inner join skd.ExchangeMember c on b.EMID = c.EMID
+    inner join skd.ClearingMember d on c.RegisteredCMID = d.CMID) wdw
+where (wdw.BusinessDate = @businessDate or @businessDate is null) and wdw.Amount &gt; 0
+order by wdw.Participant</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="businessDate" ColumnName="BusinessDate" DataSourceName="SELECT a.BusinessDate, d.Code AS Participant, d.Name, d.CMBankName AS BankName, d.CMAccountNo AS AccountNo , a.ExchangeRef, a.SellerId AS SellerAccount , CASE WHEN a.SellerReceive90Percent IS NOT NULL AND a.SellerFullReceive IS NULL THEN (SELECT (SELECT NumericValue FROM SKD.Parameter WHERE Code = 'Part2Pct') / 100) * a.Amount WHEN a.SellerReceive90Percent IS NOT NULL AND a.SellerFullReceive IS NOT NULL THEN (SELECT (SELECT NumericValue FROM SKD.Parameter WHERE Code = 'Part1Pct') / 100) * a.Amount ELSE 0 END AS Amount FROM skd.EODTradeProgress a INNER JOIN skd.Investor b ON a.SellerId = b.Code INNER JOIN skd.ExchangeMember c ON b.EMID = c.EMID INNER JOIN skd.ClearingMember d ON c.RegisteredCMID = d.CMID" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@businessDate" Precision="0" Scale="0" Size="8" SourceColumn="BusinessDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="uspInqueryWithdrawalSellerTableAdapter" GeneratorDataComponentClassName="uspInqueryWithdrawalSellerTableAdapter" Name="uspInqueryWithdrawalSeller" UserDataComponentName="uspInqueryWithdrawalSellerTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="SPPK_KBI_EOD.SKD.uspInqueryWithdrawalSeller" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>SKD.uspInqueryWithdrawalSeller</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@businessDate" Precision="10" ProviderType="Date" Scale="0" Size="3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TransactionDate" DataSetColumn="TransactionDate" />
+              <Mapping SourceColumn="Participant" DataSetColumn="Participant" />
+              <Mapping SourceColumn="SellerName" DataSetColumn="SellerName" />
+              <Mapping SourceColumn="BankName" DataSetColumn="BankName" />
+              <Mapping SourceColumn="AccountNo" DataSetColumn="AccountNo" />
+              <Mapping SourceColumn="ExchangeRef" DataSetColumn="ExchangeRef" />
+              <Mapping SourceColumn="SellerAccount" DataSetColumn="SellerAccount" />
+              <Mapping SourceColumn="SellerReceive90Percent" DataSetColumn="SellerReceive90Percent" />
+              <Mapping SourceColumn="SellerFullReceive" DataSetColumn="SellerFullReceive" />
+              <Mapping SourceColumn="Amount" DataSetColumn="Amount" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="WithdrawalSellerData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="WithdrawalSellerData" msprop:Generator_UserDSName="WithdrawalSellerData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="WithDrawal" msprop:Generator_TableClassName="WithDrawalDataTable" msprop:Generator_TableVarName="tableWithDrawal" msprop:Generator_RowChangedName="WithDrawalRowChanged" msprop:Generator_TablePropName="WithDrawal" msprop:Generator_RowDeletingName="WithDrawalRowDeleting" msprop:Generator_RowChangingName="WithDrawalRowChanging" msprop:Generator_RowEvHandlerName="WithDrawalRowChangeEventHandler" msprop:Generator_RowDeletedName="WithDrawalRowDeleted" msprop:Generator_RowClassName="WithDrawalRow" msprop:Generator_UserTableName="WithDrawal" msprop:Generator_RowEvArgName="WithDrawalRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SellerAccount" msprop:Generator_ColumnVarNameInTable="columnSellerAccount" msprop:Generator_ColumnPropNameInRow="SellerAccount" msprop:Generator_ColumnPropNameInTable="SellerAccountColumn" msprop:Generator_UserColumnName="SellerAccount">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AccountNo" msprop:Generator_ColumnVarNameInTable="columnAccountNo" msprop:Generator_ColumnPropNameInRow="AccountNo" msprop:Generator_ColumnPropNameInTable="AccountNoColumn" msprop:Generator_UserColumnName="AccountNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BankName" msprop:Generator_ColumnVarNameInTable="columnBankName" msprop:Generator_ColumnPropNameInRow="BankName" msprop:Generator_ColumnPropNameInTable="BankNameColumn" msprop:Generator_UserColumnName="BankName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BusinessDate" msprop:Generator_ColumnVarNameInTable="columnBusinessDate" msprop:Generator_ColumnPropNameInRow="BusinessDate" msprop:Generator_ColumnPropNameInTable="BusinessDateColumn" msprop:Generator_UserColumnName="BusinessDate" type="xs:dateTime" />
+              <xs:element name="Participant" msprop:Generator_ColumnVarNameInTable="columnParticipant" msprop:Generator_ColumnPropNameInRow="Participant" msprop:Generator_ColumnPropNameInTable="ParticipantColumn" msprop:Generator_UserColumnName="Participant">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExchangeRef" msprop:Generator_ColumnVarNameInTable="columnExchangeRef" msprop:Generator_ColumnPropNameInRow="ExchangeRef" msprop:Generator_ColumnPropNameInTable="ExchangeRefColumn" msprop:Generator_UserColumnName="ExchangeRef">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="uspInqueryWithdrawalSeller" msprop:Generator_TableClassName="uspInqueryWithdrawalSellerDataTable" msprop:Generator_TableVarName="tableuspInqueryWithdrawalSeller" msprop:Generator_RowChangedName="uspInqueryWithdrawalSellerRowChanged" msprop:Generator_TablePropName="uspInqueryWithdrawalSeller" msprop:Generator_RowDeletingName="uspInqueryWithdrawalSellerRowDeleting" msprop:Generator_RowChangingName="uspInqueryWithdrawalSellerRowChanging" msprop:Generator_RowEvHandlerName="uspInqueryWithdrawalSellerRowChangeEventHandler" msprop:Generator_RowDeletedName="uspInqueryWithdrawalSellerRowDeleted" msprop:Generator_RowClassName="uspInqueryWithdrawalSellerRow" msprop:Generator_UserTableName="uspInqueryWithdrawalSeller" msprop:Generator_RowEvArgName="uspInqueryWithdrawalSellerRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TransactionDate" msprop:Generator_ColumnVarNameInTable="columnTransactionDate" msprop:Generator_ColumnPropNameInRow="TransactionDate" msprop:Generator_ColumnPropNameInTable="TransactionDateColumn" msprop:Generator_UserColumnName="TransactionDate" type="xs:dateTime" />
+              <xs:element name="Participant" msprop:Generator_ColumnVarNameInTable="columnParticipant" msprop:Generator_ColumnPropNameInRow="Participant" msprop:Generator_ColumnPropNameInTable="ParticipantColumn" msprop:Generator_UserColumnName="Participant">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerName" msprop:Generator_ColumnVarNameInTable="columnSellerName" msprop:Generator_ColumnPropNameInRow="SellerName" msprop:Generator_ColumnPropNameInTable="SellerNameColumn" msprop:Generator_UserColumnName="SellerName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BankName" msprop:Generator_ColumnVarNameInTable="columnBankName" msprop:Generator_ColumnPropNameInRow="BankName" msprop:Generator_ColumnPropNameInTable="BankNameColumn" msprop:Generator_UserColumnName="BankName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AccountNo" msprop:Generator_ColumnVarNameInTable="columnAccountNo" msprop:Generator_ColumnPropNameInRow="AccountNo" msprop:Generator_ColumnPropNameInTable="AccountNoColumn" msprop:Generator_UserColumnName="AccountNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ExchangeRef" msprop:Generator_ColumnVarNameInTable="columnExchangeRef" msprop:Generator_ColumnPropNameInRow="ExchangeRef" msprop:Generator_ColumnPropNameInTable="ExchangeRefColumn" msprop:Generator_UserColumnName="ExchangeRef">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerAccount" msprop:Generator_ColumnVarNameInTable="columnSellerAccount" msprop:Generator_ColumnPropNameInRow="SellerAccount" msprop:Generator_ColumnPropNameInTable="SellerAccountColumn" msprop:Generator_UserColumnName="SellerAccount">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerReceive90Percent" msprop:Generator_ColumnVarNameInTable="columnSellerReceive90Percent" msprop:Generator_ColumnPropNameInRow="SellerReceive90Percent" msprop:Generator_ColumnPropNameInTable="SellerReceive90PercentColumn" msprop:Generator_UserColumnName="SellerReceive90Percent" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="SellerFullReceive" msprop:Generator_ColumnVarNameInTable="columnSellerFullReceive" msprop:Generator_ColumnPropNameInRow="SellerFullReceive" msprop:Generator_ColumnPropNameInTable="SellerFullReceiveColumn" msprop:Generator_UserColumnName="SellerFullReceive" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Amount" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

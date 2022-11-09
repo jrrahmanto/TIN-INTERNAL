@@ -1,0 +1,12 @@
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\bin\Release\SimulatorTimah.exe.config
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\bin\Release\SimulatorTimah.exe
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\bin\Release\SimulatorTimah.pdb
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\bin\Release\MySql.Data.dll
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\bin\Release\MySql.Data.xml
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\obj\Release\SimulatorTimah.Form1.resources
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\obj\Release\SimulatorTimah.Properties.Resources.resources
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\obj\Release\SimulatorTimah.csproj.GenerateResource.Cache
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\obj\Release\SimulatorTimah.exe
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\obj\Release\SimulatorTimah.pdb
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\bin\Release\renci.sshnet.dll
+F:\Source Code\TIN\SimulatorTimah\SimulatorTimah\obj\Release\SimulatorTimah.csprojResolveAssemblyReference.cache

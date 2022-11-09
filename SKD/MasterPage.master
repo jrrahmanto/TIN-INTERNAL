@@ -1,0 +1,217 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit"
+TagPrefix="cc" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>TIN Derivatives Clearing System</title>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <link href="Styles/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/Style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="Images/favicon.ico" type="image/x-icon" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .notification,a {
+            text-decoration: none;
+            decoration: none;
+        }
+        .notification:link, .notification:visited {
+            color: red;
+        }
+        .notification:hover {
+            color: red;
+        }
+        @keyframes blinking {
+            0%{
+              background-color: transparent;
+            }
+            100%{
+              background-color: yellow;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+   <%-- <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="True" AsyncPostBackTimeout="180000">
+    </asp:ScriptManager>--%>
+        <cc:ToolkitScriptManager ID="toolkitScriptMaster" runat="server" CombineScripts="false" EnablePageMethods="true">
+</cc:ToolkitScriptManager>
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td style="background-color: #97C4E9;" class="style1">
+                <asp:Image runat="server" ImageUrl="~/Images/Newleft.png" Height="100" alt="Indonesian Derivatives Clearing House" />
+            </td>
+            <td style="text-align: right; background-color: #97C4E9;">
+                <asp:Image runat="server" ImageUrl="~/Images/right.png" Width="345" alt="Indonesian Derivatives Clearing House" />
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #5886B6; border-bottom: solid 1px #233A51" 
+                class="style1">
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server" Font-Names="Verdana" Font-Size="11px" SkipLinkText=""
+                    PathSeparator=" > ">
+                    <PathSeparatorStyle ForeColor="#FFFFFF" />
+                    <CurrentNodeStyle ForeColor="#FFFFFF" />
+                    <NodeStyle  ForeColor="#BFDEF2" />
+                    <RootNodeStyle Font-Bold="True" ForeColor="#2B4663" />
+                </asp:SiteMapPath>
+                
+            </td>
+            <td style="background-color: #5886B6; text-align: right; padding-right: 15px; color: #DCEEF9;
+                border-bottom: solid 1px #233A51">
+                <asp:Label ID="uiLblBusinessDate" runat="server" Font-Size="11px" ForeColor="White" Font-Names="arial"></asp:Label>   
+                <asp:LoginView ID="LoginView2" runat="server">
+                    <LoggedInTemplate>
+                        |
+                        Kurs USD : <%= Session["KursUSD"] %>
+                        |
+                        Sett. Price : <%= Session["SettPrice"] %>
+                        |
+                        Floor Price : <%= Session["FloorPrice"] %>
+                        |
+                        Welcome,
+                        <%= Session["UserNameDesc"] %>
+                        <% if (Session["Notification"].ToString() != "0") { %>
+                        |
+                        <text style="color: red;"><b>
+                        <a href="/Default.aspx" class="notification">
+                        Notification : <%= Session["Notification"] %>
+                        </a></b></text>
+                        <% } %>
+                        |
+                        <asp:LinkButton ID="uiBtnLogout" runat="server" ForeColor="#DCEEF9" Font-Bold="true"
+                            OnClick="uiBtnLogout_Click">Logout</asp:LinkButton>
+                    </LoggedInTemplate>
+                </asp:LoginView>
+                <asp:LoginView ID="LoginView1" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        <span style="color: White">You are not logged in. <a style="color: White;" href="~/Login.aspx">
+                            Please click here to login</a> </span>
+                    </AnonymousTemplate>
+                </asp:LoginView>
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="background-image: url('Images/bg_menu.gif'); background-repeat: repeat-x;">
+                <asp:Menu BorderWidth="0" ID="uiMainMenu" runat="server" StaticSubMenuIndent="20px" SkipLinkText =""
+                    DynamicHorizontalOffset="1" Orientation="Horizontal" CssClass="menu-main" ItemWrap="true"
+                    StaticEnableDefaultPopOutImage="false" DynamicEnableDefaultPopOutImage="true">
+                    <DataBindings>
+                        <asp:MenuItemBinding DataMember="siteMapNode" NavigateUrlField="url" TextField="title" />
+                    </DataBindings>
+                    <StaticMenuItemStyle CssClass="menu-static-menu-item" />
+                    <StaticSelectedStyle CssClass="menu-static-selected" />
+                    <StaticItemTemplate>
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="leftmenu">
+                                    <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/spacer.gif" Width="14" Height="100%" />
+                                </td>
+                                <td class="middlemenu">
+                                    <%# Eval("Text") %>
+                                </td>
+                                <td class="rightmenu">
+                                    <asp:Image ID="Image2" runat="server" ImageUrl="~/Images/spacer.gif" Width="14" />
+                                </td>
+                            </tr>
+                        </table>
+                    </StaticItemTemplate>
+                    <DynamicMenuStyle CssClass="menu-dynamic-menu" />
+                    <DynamicMenuItemStyle CssClass="menu-dynamic-menu-item" />
+                    <DynamicHoverStyle CssClass="menu-dynamic-hover" />
+                </asp:Menu>
+                <asp:XmlDataSource ID="XmlDataSourceMenu" runat="server" DataFile="~/App_Data/Menu.xml"
+                    XPath="/Home/siteMapNode"></asp:XmlDataSource>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <table class="content" width="100%" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td>
+                            <asp:Image ID="Image3" runat="server" ImageUrl="~/Images/spacer.gif" Height="10"
+                                Width="1" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Image ID="Image4" runat="server" ImageUrl="~/Images/spacer.gif" Width="10" Height="5" />
+                        </td>
+                        <td>
+                            <asp:Image Style="vertical-align: bottom;" runat="server" ImageUrl="~/Images/top_left.gif" />
+                        </td>
+                        <td class="top">
+                            <asp:Image ID="Image5" runat="server" ImageUrl="~/Images/spacer.gif" />
+                        </td>
+                        <td>
+                            <asp:Image Style="vertical-align: bottom;" runat="server" ImageUrl="~/Images/top_right.gif" />
+                        </td>
+                        <td>
+                            <asp:Image ID="Image6" runat="server" ImageUrl="~/Images/spacer.gif" Width="1" Height="5" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Image ID="Image7" runat="server" ImageUrl="~/Images/spacer.gif" Width="1" />
+                        </td>
+                        <td class="left">
+                            <asp:Image ID="Image8" runat="server" ImageUrl="~/Images/spacer.gif" Width="7" />
+                        </td>
+                        <td style="background-color: #E4F0FB;">
+                            <div>
+                                <contenttemplate>
+                                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                    </asp:ContentPlaceHolder>
+                                    </contenttemplate>
+                            </div>
+                        </td>
+                        <td class="right">
+                            <asp:Image ID="Image9" runat="server" ImageUrl="~/Images/spacer.gif" Width="7" />
+                        </td>
+                        <td>
+                            <asp:Image ID="Image10" runat="server" ImageUrl="~/Images/spacer.gif" Width="10"
+                                Height="7" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Image ID="Image11" runat="server" ImageUrl="~/Images/spacer.gif" Width="10" />
+                        </td>
+                        <td>
+                            <asp:Image runat="server" ImageUrl="~/Images/bottom_left.gif" Width="7" ImageAlign="Top" />
+                        </td>
+                        <td class="bottom">
+                            <asp:Image ID="Image12" runat="server" ImageUrl="~/Images/spacer.gif" />
+                        </td>
+                        <td>
+                            <asp:Image runat="server" ImageUrl="~/Images/bottom_right.gif" Width="7" ImageAlign="Top" />
+                        </td>
+                        <td>
+                            <asp:Image ID="Image13" runat="server" ImageUrl="~/Images/spacer.gif" Width="10"
+                                Height="15" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="footer">
+                <br />
+                Copyright © 2020 PT Kliring Berjangka Indonesia (Persero). All Rights Reserved.
+                <br />
+                Version 1.2
+                <br />
+                Page processed in <%=DateTime.Now.Subtract(HttpContext.Current.Timestamp).TotalSeconds %> seconds
+                <br />
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

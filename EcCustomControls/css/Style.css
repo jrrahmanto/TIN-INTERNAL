@@ -1,0 +1,10 @@
+﻿body
+{
+}
+
+.modalBackground
+{
+    background-color:#e6e6e6;
+    filter:alpha(opacity=60);
+    opacity:0.60;
+}

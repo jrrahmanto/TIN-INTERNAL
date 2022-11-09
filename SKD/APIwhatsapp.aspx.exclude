@@ -1,0 +1,52 @@
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="APIwhatsapp.aspx.cs" Inherits="APIwhatsapp" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <h1>API Whatsapp</h1>
+    <table cellpadding="1" cellspacing="1" style="width: 100%;">
+        <tr>
+            <td colspan="3">
+                <asp:BulletedList ID="uiBLError" runat="server" ForeColor="Red" Visible="False">
+                </asp:BulletedList>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="shadow_view">
+                    <div class="box_view">
+                        <table class="table-row">
+                            <tr>
+                                <td style="width: 150px">Phone Number</td>
+                                <td style="width: 10px">:</td>
+                                <td>
+                                    <asp:TextBox ID="txtPhoneNumber" runat="server" type="text" CssClass="required"></asp:TextBox>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Message</td>
+                                <td>:</td>
+                                <td>
+                                    <textarea rows="10" cols="50" id="txtMsg" runat="server" CssClass="required"/>
+                                </td>
+                            </tr>
+                         
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>
+                                    <asp:Button ID="uiBtnSave" CssClass="button_save" runat="server"
+                                        Text="     Save" OnClick="uiBtnSave_Click" />
+                                    <asp:Button ID="uiBtnCancel" runat="server" CssClass="button_cancel"
+                                        Text="      Cancel" OnClick="uiBtnCancel_Click" CausesValidation="False" />
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</asp:Content>

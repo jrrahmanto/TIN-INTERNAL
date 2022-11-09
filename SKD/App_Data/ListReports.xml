@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Reports>
+  <Report>
+    <Name>DFS</Name>
+    <ReportDescription>Daily Financial Statement</ReportDescription>
+    <Path>/TIN_EOD_Report/RptNewEODDFS</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>DFS</Name>
+    <ReportDescription>Daily Financial Statement</ReportDescription>
+    <Path>/TIN_EOD_Report/RptNewEODDFS</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeRegister</Name>
+    <ReportDescription>Trade Register</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODTrdRegisterAll</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeRegister</Name>
+    <ReportDescription>Trade Register</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODTradeRegister</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <!--
+  <Report>
+    <Name>eDO</Name>
+    <ReportDescription>EDO</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEDO</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ListeDO</Name>
+    <ReportDescription>List eDO</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODListeDO</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  -->
+  <Report>
+    <Name>SecFun</Name>
+    <ReportDescription>List Security Fund</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODSecFund</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>SecFun</Name>
+    <ReportDescription>List Security Fund</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODSecFund</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>Collateral Member</Name>
+    <ReportDescription>Collateral Member</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODCollMember</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>Collateral Member</Name>
+    <ReportDescription>Collateral Member</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODCollMember</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>CollateralIssuer</Name>
+    <ReportDescription>Collateral Issuer</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODCollIssuer</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>CollateralIssuer</Name>
+    <ReportDescription>Collateral Issuer</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODCollIssuer</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>KontrakElektronik</Name>
+    <ReportDescription>Kontrak Elektronik</ReportDescription>
+    <Path>/TIN_EOD_Report/RptKontrakElektronik</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>KontrakElektronikEng</Name>
+    <ReportDescription>Kontrak Elektronik English</ReportDescription>
+    <Path>/TIN_EOD_Report/RptKontrakElektronikEng</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>KontrakElektronik</Name>
+    <ReportDescription>Kontrak Elektronik</ReportDescription>
+    <Path>/TIN_EOD_Report/RptKontrakElektronik</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>NotaPemberitahuan</Name>
+    <ReportDescription>Nota Pemberitahuan</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEDONotaPemberitahuan</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>NotaPemberitahuan</Name>
+    <ReportDescription>Nota Pemberitahuan</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEDONotaPemberitahuan</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianKeuanganHarian</Name>
+    <ReportDescription>Rincian Keuangan Harian</ReportDescription>
+    <Path>/TIN_EOD_Report/RptRincianKeuanganHarian</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>RincianKeuanganHarian</Name>
+    <ReportDescription>Rincian Keuangan Harian</ReportDescription>
+    <Path>/TIN_EOD_Report/RptRincianKeuanganHarian</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeConfirmationBuyer</Name>
+    <ReportDescription>Trade Confirmation</ReportDescription>
+    <Path>/TIN_EOD_Report/RptTradeConfirmationBuyer</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>TradeConfirmationSeller</Name>
+    <ReportDescription>Trade Confirmation</ReportDescription>
+    <Path>/TIN_EOD_Report/RptTradeConfirmationSeller</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>DailyTradeSummary</Name>
+    <ReportDescription>Daily Trade Summary</ReportDescription>
+    <Path>/TIN_EOD_Report/RptDailyTradeSummary</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <!--
+  <Report>
+    <Name>ClosingBalance</Name>
+    <ReportDescription>List Closing Balance</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODClosingBalance</Path>
+    <GenerateType>AK</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  <Report>
+    <Name>ClosingBalance</Name>
+    <ReportDescription>List Closing Balance</ReportDescription>
+    <Path>/TIN_EOD_Report/RptEODClosingBalance</Path>
+    <GenerateType>All</GenerateType>
+    <Type>EOD</Type>
+  </Report>
+  -->
+</Reports>

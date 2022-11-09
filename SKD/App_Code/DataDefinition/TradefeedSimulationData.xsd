@@ -1,0 +1,699 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TradefeedSimulationData" targetNamespace="http://tempuri.org/TradefeedSimulationData.xsd" xmlns:mstns="http://tempuri.org/TradefeedSimulationData.xsd" xmlns="http://tempuri.org/TradefeedSimulationData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SKDConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SKDConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SKDConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CommodityCheckTableAdapter" GeneratorDataComponentClassName="CommodityCheckTableAdapter" Name="CommodityCheck" UserDataComponentName="CommodityCheckTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="SELECT e.ExchangeCode , e.ExchangeId , c1.CommodityCode FROM SKD.Commodity c1 INNER JOIN SKD.Exchange e ON c1.ExchangeId = e.ExchangeId" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select com.ExchangeCode 
+		, com.CommodityCode  
+from SKD.RawTradeFeedSimulation rtfs 
+left outer join 
+( 
+	select e.ExchangeCode 
+			, e.ExchangeId 
+			, c1.CommodityCode 
+	from SKD.Commodity c1 inner join SKD.Exchange e 
+	on c1.ExchangeId = e.ExchangeId 
+) com 
+on com.ExchangeId = rtfs.ExchangeId 
+	and rtfs.ProductCode = com.CommodityCode 
+where com.CommodityCode is null 
+
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ExchangeCode" DataSetColumn="ExchangeCode" />
+              <Mapping SourceColumn="CommodityCode" DataSetColumn="CommodityCode" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BuyerCheckTableAdapter" GeneratorDataComponentClassName="BuyerCheckTableAdapter" Name="BuyerCheck" UserDataComponentName="BuyerCheckTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="SELECT e.ExchangeId , e.ExchangeCode , r1.BuyerInvCode , r1.BuyerEMCode , r1.BuyerCMCode FROM SKD.RawTradeFeedSimulation r1 INNER JOIN SKD.Exchange e ON r1.ExchangeId = e.ExchangeId" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select rtfs.ExchangeCode 
+		, rtfs.BuyerCMCode 
+		, rtfs.BuyerEMCode 
+		, rtfs.BuyerInvCode 
+from 
+( 
+	select e.ExchangeId 
+			, e.ExchangeCode 
+			, r1.BuyerInvCode 
+			, r1.BuyerEMCode 
+			, r1.BuyerCMCode 
+	from SKD.RawTradeFeedSimulation r1 inner join SKD.Exchange e 
+	on r1.ExchangeId = e.ExchangeId 
+) rtfs left outer join 
+( 
+	select e.ExchangeId 
+			, e.ExchangeCode 
+			, i.Code as InvCode 
+			, em.Code as EMCode 
+			, cm.Code as CMCode 
+	from SKD.ClearingMember cm 
+		inner join SKD.ExchangeMember em 
+			on cm.CMID = em.RegisteredCMID 
+		inner join SKD.Investor i 
+			on em.EMID = i.EMID 
+		inner join SKD.Exchange e 
+			on e.ExchangeId = em.ExchangeId 
+) cei 
+on rtfs.ExchangeId = cei.ExchangeId 
+	and rtfs.BuyerInvCode = cei.InvCode 
+	and rtfs.BuyerEMCode = cei.EMCode 
+	and rtfs.BuyerCMCode = cei.CMCode 
+where cei.InvCode is null 
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ExchangeCode" DataSetColumn="ExchangeCode" />
+              <Mapping SourceColumn="BuyerCMCode" DataSetColumn="BuyerCMCode" />
+              <Mapping SourceColumn="BuyerEMCode" DataSetColumn="BuyerEMCode" />
+              <Mapping SourceColumn="BuyerInvCode" DataSetColumn="BuyerInvCode" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SellerCheckTableAdapter" GeneratorDataComponentClassName="SellerCheckTableAdapter" Name="SellerCheck" UserDataComponentName="SellerCheckTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="SELECT e.ExchangeId , e.ExchangeCode , r1.SellerInvCode , r1.SellerEMCode , r1.SellerCMCode FROM SKD.RawTradeFeedSimulation r1 INNER JOIN SKD.Exchange e ON r1.ExchangeId = e.ExchangeId" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select rtfs.ExchangeCode 
+		, rtfs.SellerCMCode 
+		, rtfs.SellerEMCode 
+		, rtfs.SellerInvCode 
+from 
+( 
+	select e.ExchangeId 
+			, e.ExchangeCode 
+			, r1.SellerInvCode 
+			, r1.SellerEMCode 
+			, r1.SellerCMCode 
+	from SKD.RawTradeFeedSimulation r1 inner join SKD.Exchange e 
+	on r1.ExchangeId = e.ExchangeId 
+) rtfs left outer join 
+( 
+	select e.ExchangeId 
+			, e.ExchangeCode 
+			, i.Code as InvCode 
+			, em.Code as EMCode 
+			, cm.Code as CMCode 
+	from SKD.ClearingMember cm 
+		inner join SKD.ExchangeMember em 
+			on cm.CMID = em.RegisteredCMID 
+		inner join SKD.Investor i 
+			on em.EMID = i.EMID 
+		inner join SKD.Exchange e 
+			on e.ExchangeId = em.ExchangeId 
+) cei 
+on rtfs.ExchangeId = cei.ExchangeId 
+	and rtfs.SellerInvCode = cei.InvCode 
+	and rtfs.SellerEMCode = cei.EMCode 
+	and rtfs.SellerCMCode = cei.CMCode 
+where cei.InvCode is null 
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ExchangeCode" DataSetColumn="ExchangeCode" />
+              <Mapping SourceColumn="SellerCMCode" DataSetColumn="SellerCMCode" />
+              <Mapping SourceColumn="SellerEMCode" DataSetColumn="SellerEMCode" />
+              <Mapping SourceColumn="SellerInvCode" DataSetColumn="SellerInvCode" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ContractCheckTableAdapter" GeneratorDataComponentClassName="ContractCheckTableAdapter" Name="ContractCheck" UserDataComponentName="ContractCheckTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="SELECT e.ExchangeId , e.ExchangeCode , r1.ProductCode , CAST(r1.MonthContract AS varchar(6)) AS MYContract FROM SKD.RawTradeFeedSimulation r1 INNER JOIN SKD.Exchange e ON r1.ExchangeId = e.ExchangeId" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select rtfs.ExchangeCode 
+		, rtfs.ProductCode 
+		, SUBSTRING(rtfs.MYContract, 1, 4) as YearContract 
+		, SUBSTRING(rtfs.MYContract, 5, 2) as MonthContract 
+from 
+( 
+	select e.ExchangeId 
+			, e.ExchangeCode 
+			, r1.ProductCode 
+			, cast(r1.MonthContract as varchar(6)) as MYContract 
+	from SKD.RawTradeFeedSimulation r1 inner join SKD.Exchange e 
+	on r1.ExchangeId = e.ExchangeId 
+) rtfs 
+left outer join 
+( 
+	select e.ExchangeCode 
+			, e.ExchangeId 
+			, c1.CommodityCode 
+			, c2.ContractMonth 
+			, c2.ContractYear 
+	from SKD.Commodity c1 inner join SKD.Exchange e 
+	on c1.ExchangeId = e.ExchangeId 
+	inner join SKD.Contract c2 
+	on c1.CommodityID = c2.CommodityID 
+) com 
+on com.ExchangeId = rtfs.ExchangeId 
+	and rtfs.ProductCode = com.CommodityCode 
+	and substring(rtfs.MYContract, 1, 4) = com.ContractYear 
+	and substring(rtfs.MYContract, 5, 2) = com.ContractMonth 
+where com.CommodityCode is null 
+
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ExchangeCode" DataSetColumn="ExchangeCode" />
+              <Mapping SourceColumn="ProductCode" DataSetColumn="ProductCode" />
+              <Mapping SourceColumn="YearContract" DataSetColumn="YearContract" />
+              <Mapping SourceColumn="MonthContract" DataSetColumn="MonthContract" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SimulationValidateTradeTableAdapter" GeneratorDataComponentClassName="SimulationValidateTradeTableAdapter" Name="SimulationValidateTrade" UserDataComponentName="SimulationValidateTradeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="SKDUAT_PreMargining.SKD.uspSimulationValidateTrade" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>SKD.uspSimulationValidateTrade</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@businessDate" Precision="23" ProviderType="DateTime" Scale="3" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Id" DataSetColumn="Id" />
+              <Mapping SourceColumn="TradeFeedID" DataSetColumn="TradeFeedID" />
+              <Mapping SourceColumn="ErrorValidationResult" DataSetColumn="ErrorValidationResult" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RawTradeFeedSimulationTableAdapter" GeneratorDataComponentClassName="RawTradeFeedSimulationTableAdapter" Name="RawTradeFeedSimulation" UserDataComponentName="RawTradeFeedSimulationTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="SKD_UAT.SKD.RawTradeFeedSimulation" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [SKD].[RawTradeFeedSimulation] WHERE (([ExchangeId] = @Original_ExchangeId) AND ([TradeFeedIDSimulation] = @Original_TradeFeedIDSimulation) AND ([TradeFeedID] = @Original_TradeFeedID) AND ([BusinessDate] = @Original_BusinessDate) AND ([SessionId] = @Original_SessionId))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_ExchangeId" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="ExchangeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_TradeFeedIDSimulation" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="TradeFeedIDSimulation" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_TradeFeedID" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="TradeFeedID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_BusinessDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BusinessDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_SessionId" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SessionId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [SKD].[RawTradeFeedSimulation] ([ExchangeId], [TradeFeedIDSimulation], [TradeFeedID], [BusinessDate], [TradeTime], [TradeReceivedTime], [TradeTimeOffset], [TradeOptType], [ProductCode], [MonthContract], [Price], [Qty], [ExchangeRef], [SellerCMCode], [SellerEMCode], [SellerInvCode], [BuyerCMCode], [BuyerEMCode], [BuyerInvCode], [TradeStrikePrice], [ContraIndicator], [SellerInvGiveUpCode], [SellerGiveUpComm], [SellerRef], [SellerTrdType], [SellerCompTradeType], [SellerTotalLeg], [BuyerTrdType], [BuyerInvGiveUpCode], [BuyerGiveUpComm], [BuyerCompTradeType], [BuyerRef], [TradeVersion], [BuyTotLeg], [CreatedBy], [SessionId]) VALUES (@ExchangeId, @TradeFeedIDSimulation, @TradeFeedID, @BusinessDate, @TradeTime, @TradeReceivedTime, @TradeTimeOffset, @TradeOptType, @ProductCode, @MonthContract, @Price, @Qty, @ExchangeRef, @SellerCMCode, @SellerEMCode, @SellerInvCode, @BuyerCMCode, @BuyerEMCode, @BuyerInvCode, @TradeStrikePrice, @ContraIndicator, @SellerInvGiveUpCode, @SellerGiveUpComm, @SellerRef, @SellerTrdType, @SellerCompTradeType, @SellerTotalLeg, @BuyerTrdType, @BuyerInvGiveUpCode, @BuyerGiveUpComm, @BuyerCompTradeType, @BuyerRef, @TradeVersion, @BuyTotLeg, @CreatedBy, @SessionId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@ExchangeId" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="ExchangeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TradeFeedIDSimulation" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="TradeFeedIDSimulation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TradeFeedID" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="TradeFeedID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@BusinessDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BusinessDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@TradeTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="TradeTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@TradeReceivedTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="TradeReceivedTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TradeTimeOffset" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TradeTimeOffset" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@TradeOptType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="TradeOptType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ProductCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ProductCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@MonthContract" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="MonthContract" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Price" Precision="24" ProviderType="Decimal" Scale="10" Size="0" SourceColumn="Price" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Qty" Precision="20" ProviderType="Decimal" Scale="5" Size="0" SourceColumn="Qty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ExchangeRef" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ExchangeRef" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerCMCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerCMCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerEMCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerEMCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerInvCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerInvCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BuyerCMCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BuyerCMCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BuyerEMCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BuyerEMCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BuyerInvCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BuyerInvCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TradeStrikePrice" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="TradeStrikePrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@ContraIndicator" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="ContraIndicator" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerInvGiveUpCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerInvGiveUpCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@SellerGiveUpComm" Precision="10" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="SellerGiveUpComm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerRef" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerRef" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@SellerTrdType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SellerTrdType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@SellerCompTradeType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SellerCompTradeType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SellerTotalLeg" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SellerTotalLeg" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@BuyerTrdType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BuyerTrdType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@BuyerInvGiveUpCode" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BuyerInvGiveUpCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@BuyerGiveUpComm" Precision="10" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="BuyerGiveUpComm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@BuyerCompTradeType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BuyerCompTradeType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BuyerRef" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BuyerRef" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TradeVersion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TradeVersion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@BuyTotLeg" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="BuyTotLeg" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CreatedBy" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CreatedBy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SessionId" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SessionId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>Select *
+from SKD.RawTradeFeedSimulation</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [SKD].[RawTradeFeedSimulation] SET [ExchangeId] = @ExchangeId, [TradeFeedIDSimulation] = @TradeFeedIDSimulation, [TradeFeedID] = @TradeFeedID, [BusinessDate] = @BusinessDate, [TradeTime] = @TradeTime, [TradeReceivedTime] = @TradeReceivedTime, [TradeTimeOffset] = @TradeTimeOffset, [TradeOptType] = @TradeOptType, [ProductCode] = @ProductCode, [MonthContract] = @MonthContract, [Price] = @Price, [Qty] = @Qty, [ExchangeRef] = @ExchangeRef, [SellerCMCode] = @SellerCMCode, [SellerEMCode] = @SellerEMCode, [SellerInvCode] = @SellerInvCode, [BuyerCMCode] = @BuyerCMCode, [BuyerEMCode] = @BuyerEMCode, [BuyerInvCode] = @BuyerInvCode, [TradeStrikePrice] = @TradeStrikePrice, [ContraIndicator] = @ContraIndicator, [SellerInvGiveUpCode] = @SellerInvGiveUpCode, [SellerGiveUpComm] = @SellerGiveUpComm, [SellerRef] = @SellerRef, [SellerTrdType] = @SellerTrdType, [SellerCompTradeType] = @SellerCompTradeType, [SellerTotalLeg] = @SellerTotalLeg, [BuyerTrdType] = @BuyerTrdType, [BuyerInvGiveUpCode] = @BuyerInvGiveUpCode, [BuyerGiveUpComm] = @BuyerGiveUpComm, [BuyerCompTradeType] = @BuyerCompTradeType, [BuyerRef] = @BuyerRef, [TradeVersion] = @TradeVersion, [BuyTotLeg] = @BuyTotLeg, [CreatedBy] = @CreatedBy, [SessionId] = @SessionId WHERE (([ExchangeId] = @Original_ExchangeId) AND ([TradeFeedIDSimulation] = @Original_TradeFeedIDSimulation) AND ([TradeFeedID] = @Original_TradeFeedID) AND ([BusinessDate] = @Original_BusinessDate) AND ([SessionId] = @Original_SessionId))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@ExchangeId" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="ExchangeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TradeFeedIDSimulation" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="TradeFeedIDSimulation" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TradeFeedID" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="TradeFeedID" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@BusinessDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BusinessDate" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@TradeTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="TradeTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@TradeReceivedTime" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="TradeReceivedTime" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TradeTimeOffset" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TradeTimeOffset" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@TradeOptType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="TradeOptType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ProductCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ProductCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@MonthContract" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="MonthContract" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Price" Precision="24" ProviderType="Decimal" Scale="10" Size="0" SourceColumn="Price" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Qty" Precision="20" ProviderType="Decimal" Scale="5" Size="0" SourceColumn="Qty" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ExchangeRef" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ExchangeRef" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerCMCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerCMCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerEMCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerEMCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerInvCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerInvCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BuyerCMCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BuyerCMCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BuyerEMCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BuyerEMCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BuyerInvCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BuyerInvCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@TradeStrikePrice" Precision="10" ProviderType="Decimal" Scale="2" Size="0" SourceColumn="TradeStrikePrice" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@ContraIndicator" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="ContraIndicator" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerInvGiveUpCode" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerInvGiveUpCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@SellerGiveUpComm" Precision="10" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="SellerGiveUpComm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SellerRef" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SellerRef" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@SellerTrdType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SellerTrdType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@SellerCompTradeType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="SellerCompTradeType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@SellerTotalLeg" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="SellerTotalLeg" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@BuyerTrdType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BuyerTrdType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@BuyerInvGiveUpCode" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BuyerInvGiveUpCode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@BuyerGiveUpComm" Precision="10" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="BuyerGiveUpComm" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiStringFixedLength" Direction="Input" ParameterName="@BuyerCompTradeType" Precision="0" ProviderType="Char" Scale="0" Size="0" SourceColumn="BuyerCompTradeType" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@BuyerRef" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="BuyerRef" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@TradeVersion" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="TradeVersion" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@BuyTotLeg" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="BuyTotLeg" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@CreatedBy" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="CreatedBy" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@SessionId" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SessionId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_ExchangeId" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="ExchangeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_TradeFeedIDSimulation" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="TradeFeedIDSimulation" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_TradeFeedID" Precision="18" ProviderType="Decimal" Scale="0" Size="0" SourceColumn="TradeFeedID" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="DateTime" Direction="Input" ParameterName="@Original_BusinessDate" Precision="0" ProviderType="DateTime" Scale="0" Size="0" SourceColumn="BusinessDate" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_SessionId" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="SessionId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ExchangeId" DataSetColumn="ExchangeId" />
+              <Mapping SourceColumn="TradeFeedIDSimulation" DataSetColumn="TradeFeedIDSimulation" />
+              <Mapping SourceColumn="TradeFeedID" DataSetColumn="TradeFeedID" />
+              <Mapping SourceColumn="BusinessDate" DataSetColumn="BusinessDate" />
+              <Mapping SourceColumn="TradeTime" DataSetColumn="TradeTime" />
+              <Mapping SourceColumn="TradeReceivedTime" DataSetColumn="TradeReceivedTime" />
+              <Mapping SourceColumn="TradeTimeOffset" DataSetColumn="TradeTimeOffset" />
+              <Mapping SourceColumn="TradeOptType" DataSetColumn="TradeOptType" />
+              <Mapping SourceColumn="ProductCode" DataSetColumn="ProductCode" />
+              <Mapping SourceColumn="MonthContract" DataSetColumn="MonthContract" />
+              <Mapping SourceColumn="Price" DataSetColumn="Price" />
+              <Mapping SourceColumn="Qty" DataSetColumn="Qty" />
+              <Mapping SourceColumn="ExchangeRef" DataSetColumn="ExchangeRef" />
+              <Mapping SourceColumn="SellerCMCode" DataSetColumn="SellerCMCode" />
+              <Mapping SourceColumn="SellerEMCode" DataSetColumn="SellerEMCode" />
+              <Mapping SourceColumn="SellerInvCode" DataSetColumn="SellerInvCode" />
+              <Mapping SourceColumn="BuyerCMCode" DataSetColumn="BuyerCMCode" />
+              <Mapping SourceColumn="BuyerEMCode" DataSetColumn="BuyerEMCode" />
+              <Mapping SourceColumn="BuyerInvCode" DataSetColumn="BuyerInvCode" />
+              <Mapping SourceColumn="TradeStrikePrice" DataSetColumn="TradeStrikePrice" />
+              <Mapping SourceColumn="ContraIndicator" DataSetColumn="ContraIndicator" />
+              <Mapping SourceColumn="SellerInvGiveUpCode" DataSetColumn="SellerInvGiveUpCode" />
+              <Mapping SourceColumn="SellerGiveUpComm" DataSetColumn="SellerGiveUpComm" />
+              <Mapping SourceColumn="SellerRef" DataSetColumn="SellerRef" />
+              <Mapping SourceColumn="SellerTrdType" DataSetColumn="SellerTrdType" />
+              <Mapping SourceColumn="SellerCompTradeType" DataSetColumn="SellerCompTradeType" />
+              <Mapping SourceColumn="SellerTotalLeg" DataSetColumn="SellerTotalLeg" />
+              <Mapping SourceColumn="BuyerTrdType" DataSetColumn="BuyerTrdType" />
+              <Mapping SourceColumn="BuyerInvGiveUpCode" DataSetColumn="BuyerInvGiveUpCode" />
+              <Mapping SourceColumn="BuyerGiveUpComm" DataSetColumn="BuyerGiveUpComm" />
+              <Mapping SourceColumn="BuyerCompTradeType" DataSetColumn="BuyerCompTradeType" />
+              <Mapping SourceColumn="BuyerRef" DataSetColumn="BuyerRef" />
+              <Mapping SourceColumn="TradeVersion" DataSetColumn="TradeVersion" />
+              <Mapping SourceColumn="BuyTotLeg" DataSetColumn="BuyTotLeg" />
+              <Mapping SourceColumn="CreatedBy" DataSetColumn="CreatedBy" />
+              <Mapping SourceColumn="SessionId" DataSetColumn="SessionId" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="SKDConnectionString (Web.config)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteAll" Modifier="Public" Name="DeleteAll" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteAll">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>DELETE FROM [SKD].[RawTradeFeedSimulation]</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </DeleteCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TradefeedSimulationData" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="TradefeedSimulationData" msprop:Generator_DataSetName="TradefeedSimulationData">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CommodityCheck" msprop:Generator_UserTableName="CommodityCheck" msprop:Generator_RowDeletedName="CommodityCheckRowDeleted" msprop:Generator_RowChangedName="CommodityCheckRowChanged" msprop:Generator_RowClassName="CommodityCheckRow" msprop:Generator_RowChangingName="CommodityCheckRowChanging" msprop:Generator_RowEvArgName="CommodityCheckRowChangeEvent" msprop:Generator_RowEvHandlerName="CommodityCheckRowChangeEventHandler" msprop:Generator_TableClassName="CommodityCheckDataTable" msprop:Generator_TableVarName="tableCommodityCheck" msprop:Generator_RowDeletingName="CommodityCheckRowDeleting" msprop:Generator_TablePropName="CommodityCheck">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ExchangeCode" msprop:Generator_UserColumnName="ExchangeCode" msprop:Generator_ColumnPropNameInRow="ExchangeCode" msprop:Generator_ColumnVarNameInTable="columnExchangeCode" msprop:Generator_ColumnPropNameInTable="ExchangeCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CommodityCode" msprop:Generator_UserColumnName="CommodityCode" msprop:Generator_ColumnPropNameInRow="CommodityCode" msprop:Generator_ColumnVarNameInTable="columnCommodityCode" msprop:Generator_ColumnPropNameInTable="CommodityCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BuyerCheck" msprop:Generator_UserTableName="BuyerCheck" msprop:Generator_RowDeletedName="BuyerCheckRowDeleted" msprop:Generator_RowChangedName="BuyerCheckRowChanged" msprop:Generator_RowClassName="BuyerCheckRow" msprop:Generator_RowChangingName="BuyerCheckRowChanging" msprop:Generator_RowEvArgName="BuyerCheckRowChangeEvent" msprop:Generator_RowEvHandlerName="BuyerCheckRowChangeEventHandler" msprop:Generator_TableClassName="BuyerCheckDataTable" msprop:Generator_TableVarName="tableBuyerCheck" msprop:Generator_RowDeletingName="BuyerCheckRowDeleting" msprop:Generator_TablePropName="BuyerCheck">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ExchangeCode" msprop:Generator_UserColumnName="ExchangeCode" msprop:Generator_ColumnPropNameInRow="ExchangeCode" msprop:Generator_ColumnVarNameInTable="columnExchangeCode" msprop:Generator_ColumnPropNameInTable="ExchangeCodeColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerCMCode" msprop:Generator_UserColumnName="BuyerCMCode" msprop:Generator_ColumnPropNameInRow="BuyerCMCode" msprop:Generator_ColumnVarNameInTable="columnBuyerCMCode" msprop:Generator_ColumnPropNameInTable="BuyerCMCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerEMCode" msprop:Generator_UserColumnName="BuyerEMCode" msprop:Generator_ColumnPropNameInRow="BuyerEMCode" msprop:Generator_ColumnVarNameInTable="columnBuyerEMCode" msprop:Generator_ColumnPropNameInTable="BuyerEMCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerInvCode" msprop:Generator_UserColumnName="BuyerInvCode" msprop:Generator_ColumnPropNameInRow="BuyerInvCode" msprop:Generator_ColumnVarNameInTable="columnBuyerInvCode" msprop:Generator_ColumnPropNameInTable="BuyerInvCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SellerCheck" msprop:Generator_UserTableName="SellerCheck" msprop:Generator_RowDeletedName="SellerCheckRowDeleted" msprop:Generator_RowChangedName="SellerCheckRowChanged" msprop:Generator_RowClassName="SellerCheckRow" msprop:Generator_RowChangingName="SellerCheckRowChanging" msprop:Generator_RowEvArgName="SellerCheckRowChangeEvent" msprop:Generator_RowEvHandlerName="SellerCheckRowChangeEventHandler" msprop:Generator_TableClassName="SellerCheckDataTable" msprop:Generator_TableVarName="tableSellerCheck" msprop:Generator_RowDeletingName="SellerCheckRowDeleting" msprop:Generator_TablePropName="SellerCheck">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ExchangeCode" msprop:Generator_UserColumnName="ExchangeCode" msprop:Generator_ColumnPropNameInRow="ExchangeCode" msprop:Generator_ColumnVarNameInTable="columnExchangeCode" msprop:Generator_ColumnPropNameInTable="ExchangeCodeColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerCMCode" msprop:Generator_UserColumnName="SellerCMCode" msprop:Generator_ColumnPropNameInRow="SellerCMCode" msprop:Generator_ColumnVarNameInTable="columnSellerCMCode" msprop:Generator_ColumnPropNameInTable="SellerCMCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerEMCode" msprop:Generator_UserColumnName="SellerEMCode" msprop:Generator_ColumnPropNameInRow="SellerEMCode" msprop:Generator_ColumnVarNameInTable="columnSellerEMCode" msprop:Generator_ColumnPropNameInTable="SellerEMCodeColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerInvCode" msprop:Generator_UserColumnName="SellerInvCode" msprop:Generator_ColumnPropNameInRow="SellerInvCode" msprop:Generator_ColumnVarNameInTable="columnSellerInvCode" msprop:Generator_ColumnPropNameInTable="SellerInvCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ContractCheck" msprop:Generator_UserTableName="ContractCheck" msprop:Generator_RowDeletedName="ContractCheckRowDeleted" msprop:Generator_RowChangedName="ContractCheckRowChanged" msprop:Generator_RowClassName="ContractCheckRow" msprop:Generator_RowChangingName="ContractCheckRowChanging" msprop:Generator_RowEvArgName="ContractCheckRowChangeEvent" msprop:Generator_RowEvHandlerName="ContractCheckRowChangeEventHandler" msprop:Generator_TableClassName="ContractCheckDataTable" msprop:Generator_TableVarName="tableContractCheck" msprop:Generator_RowDeletingName="ContractCheckRowDeleting" msprop:Generator_TablePropName="ContractCheck">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ExchangeCode" msprop:Generator_UserColumnName="ExchangeCode" msprop:Generator_ColumnPropNameInRow="ExchangeCode" msprop:Generator_ColumnVarNameInTable="columnExchangeCode" msprop:Generator_ColumnPropNameInTable="ExchangeCodeColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductCode" msprop:Generator_UserColumnName="ProductCode" msprop:Generator_ColumnPropNameInRow="ProductCode" msprop:Generator_ColumnVarNameInTable="columnProductCode" msprop:Generator_ColumnPropNameInTable="ProductCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="YearContract" msdata:ReadOnly="true" msprop:Generator_UserColumnName="YearContract" msprop:Generator_ColumnPropNameInRow="YearContract" msprop:Generator_ColumnVarNameInTable="columnYearContract" msprop:Generator_ColumnPropNameInTable="YearContractColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MonthContract" msdata:ReadOnly="true" msprop:Generator_UserColumnName="MonthContract" msprop:Generator_ColumnPropNameInRow="MonthContract" msprop:Generator_ColumnVarNameInTable="columnMonthContract" msprop:Generator_ColumnPropNameInTable="MonthContractColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SimulationValidateTrade" msprop:Generator_UserTableName="SimulationValidateTrade" msprop:Generator_RowDeletedName="SimulationValidateTradeRowDeleted" msprop:Generator_RowChangedName="SimulationValidateTradeRowChanged" msprop:Generator_RowClassName="SimulationValidateTradeRow" msprop:Generator_RowChangingName="SimulationValidateTradeRowChanging" msprop:Generator_RowEvArgName="SimulationValidateTradeRowChangeEvent" msprop:Generator_RowEvHandlerName="SimulationValidateTradeRowChangeEventHandler" msprop:Generator_TableClassName="SimulationValidateTradeDataTable" msprop:Generator_TableVarName="tableSimulationValidateTrade" msprop:Generator_RowDeletingName="SimulationValidateTradeRowDeleting" msprop:Generator_TablePropName="SimulationValidateTrade">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Id" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" type="xs:int" />
+              <xs:element name="TradeFeedID" msprop:Generator_UserColumnName="TradeFeedID" msprop:Generator_ColumnVarNameInTable="columnTradeFeedID" msprop:Generator_ColumnPropNameInRow="TradeFeedID" msprop:Generator_ColumnPropNameInTable="TradeFeedIDColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ErrorValidationResult" msprop:Generator_UserColumnName="ErrorValidationResult" msprop:Generator_ColumnVarNameInTable="columnErrorValidationResult" msprop:Generator_ColumnPropNameInRow="ErrorValidationResult" msprop:Generator_ColumnPropNameInTable="ErrorValidationResultColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RawTradeFeedSimulation" msprop:Generator_UserTableName="RawTradeFeedSimulation" msprop:Generator_RowDeletedName="RawTradeFeedSimulationRowDeleted" msprop:Generator_TableClassName="RawTradeFeedSimulationDataTable" msprop:Generator_RowChangedName="RawTradeFeedSimulationRowChanged" msprop:Generator_RowClassName="RawTradeFeedSimulationRow" msprop:Generator_RowChangingName="RawTradeFeedSimulationRowChanging" msprop:Generator_RowEvArgName="RawTradeFeedSimulationRowChangeEvent" msprop:Generator_RowEvHandlerName="RawTradeFeedSimulationRowChangeEventHandler" msprop:Generator_TablePropName="RawTradeFeedSimulation" msprop:Generator_TableVarName="tableRawTradeFeedSimulation" msprop:Generator_RowDeletingName="RawTradeFeedSimulationRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ExchangeId" msprop:Generator_UserColumnName="ExchangeId" msprop:Generator_ColumnPropNameInRow="ExchangeId" msprop:Generator_ColumnVarNameInTable="columnExchangeId" msprop:Generator_ColumnPropNameInTable="ExchangeIdColumn" type="xs:decimal" />
+              <xs:element name="TradeFeedIDSimulation" msprop:Generator_UserColumnName="TradeFeedIDSimulation" msprop:Generator_ColumnPropNameInRow="TradeFeedIDSimulation" msprop:Generator_ColumnVarNameInTable="columnTradeFeedIDSimulation" msprop:Generator_ColumnPropNameInTable="TradeFeedIDSimulationColumn" type="xs:decimal" />
+              <xs:element name="TradeFeedID" msprop:Generator_UserColumnName="TradeFeedID" msprop:Generator_ColumnPropNameInRow="TradeFeedID" msprop:Generator_ColumnVarNameInTable="columnTradeFeedID" msprop:Generator_ColumnPropNameInTable="TradeFeedIDColumn" type="xs:decimal" />
+              <xs:element name="BusinessDate" msprop:Generator_UserColumnName="BusinessDate" msprop:Generator_ColumnPropNameInRow="BusinessDate" msprop:Generator_ColumnVarNameInTable="columnBusinessDate" msprop:Generator_ColumnPropNameInTable="BusinessDateColumn" type="xs:dateTime" />
+              <xs:element name="TradeTime" msprop:Generator_UserColumnName="TradeTime" msprop:Generator_ColumnPropNameInRow="TradeTime" msprop:Generator_ColumnVarNameInTable="columnTradeTime" msprop:Generator_ColumnPropNameInTable="TradeTimeColumn" type="xs:dateTime" />
+              <xs:element name="TradeReceivedTime" msprop:Generator_UserColumnName="TradeReceivedTime" msprop:Generator_ColumnPropNameInRow="TradeReceivedTime" msprop:Generator_ColumnVarNameInTable="columnTradeReceivedTime" msprop:Generator_ColumnPropNameInTable="TradeReceivedTimeColumn" type="xs:dateTime" />
+              <xs:element name="TradeTimeOffset" msprop:Generator_UserColumnName="TradeTimeOffset" msprop:Generator_ColumnPropNameInRow="TradeTimeOffset" msprop:Generator_ColumnVarNameInTable="columnTradeTimeOffset" msprop:Generator_ColumnPropNameInTable="TradeTimeOffsetColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TradeOptType" msprop:Generator_UserColumnName="TradeOptType" msprop:Generator_ColumnPropNameInRow="TradeOptType" msprop:Generator_ColumnVarNameInTable="columnTradeOptType" msprop:Generator_ColumnPropNameInTable="TradeOptTypeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProductCode" msprop:Generator_UserColumnName="ProductCode" msprop:Generator_ColumnPropNameInRow="ProductCode" msprop:Generator_ColumnVarNameInTable="columnProductCode" msprop:Generator_ColumnPropNameInTable="ProductCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MonthContract" msprop:Generator_UserColumnName="MonthContract" msprop:Generator_ColumnPropNameInRow="MonthContract" msprop:Generator_ColumnVarNameInTable="columnMonthContract" msprop:Generator_ColumnPropNameInTable="MonthContractColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_ColumnPropNameInTable="PriceColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Qty" msprop:Generator_UserColumnName="Qty" msprop:Generator_ColumnPropNameInRow="Qty" msprop:Generator_ColumnVarNameInTable="columnQty" msprop:Generator_ColumnPropNameInTable="QtyColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ExchangeRef" msprop:Generator_UserColumnName="ExchangeRef" msprop:Generator_ColumnPropNameInRow="ExchangeRef" msprop:Generator_ColumnVarNameInTable="columnExchangeRef" msprop:Generator_ColumnPropNameInTable="ExchangeRefColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerCMCode" msprop:Generator_UserColumnName="SellerCMCode" msprop:Generator_ColumnPropNameInRow="SellerCMCode" msprop:Generator_ColumnVarNameInTable="columnSellerCMCode" msprop:Generator_ColumnPropNameInTable="SellerCMCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerEMCode" msprop:Generator_UserColumnName="SellerEMCode" msprop:Generator_ColumnPropNameInRow="SellerEMCode" msprop:Generator_ColumnVarNameInTable="columnSellerEMCode" msprop:Generator_ColumnPropNameInTable="SellerEMCodeColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerInvCode" msprop:Generator_UserColumnName="SellerInvCode" msprop:Generator_ColumnPropNameInRow="SellerInvCode" msprop:Generator_ColumnVarNameInTable="columnSellerInvCode" msprop:Generator_ColumnPropNameInTable="SellerInvCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerCMCode" msprop:Generator_UserColumnName="BuyerCMCode" msprop:Generator_ColumnPropNameInRow="BuyerCMCode" msprop:Generator_ColumnVarNameInTable="columnBuyerCMCode" msprop:Generator_ColumnPropNameInTable="BuyerCMCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerEMCode" msprop:Generator_UserColumnName="BuyerEMCode" msprop:Generator_ColumnPropNameInRow="BuyerEMCode" msprop:Generator_ColumnVarNameInTable="columnBuyerEMCode" msprop:Generator_ColumnPropNameInTable="BuyerEMCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerInvCode" msprop:Generator_UserColumnName="BuyerInvCode" msprop:Generator_ColumnPropNameInRow="BuyerInvCode" msprop:Generator_ColumnVarNameInTable="columnBuyerInvCode" msprop:Generator_ColumnPropNameInTable="BuyerInvCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TradeStrikePrice" msprop:Generator_UserColumnName="TradeStrikePrice" msprop:Generator_ColumnPropNameInRow="TradeStrikePrice" msprop:Generator_ColumnVarNameInTable="columnTradeStrikePrice" msprop:Generator_ColumnPropNameInTable="TradeStrikePriceColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ContraIndicator" msprop:Generator_UserColumnName="ContraIndicator" msprop:Generator_ColumnPropNameInRow="ContraIndicator" msprop:Generator_ColumnVarNameInTable="columnContraIndicator" msprop:Generator_ColumnPropNameInTable="ContraIndicatorColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerInvGiveUpCode" msprop:Generator_UserColumnName="SellerInvGiveUpCode" msprop:Generator_ColumnPropNameInRow="SellerInvGiveUpCode" msprop:Generator_ColumnVarNameInTable="columnSellerInvGiveUpCode" msprop:Generator_ColumnPropNameInTable="SellerInvGiveUpCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerGiveUpComm" msprop:Generator_UserColumnName="SellerGiveUpComm" msprop:Generator_ColumnPropNameInRow="SellerGiveUpComm" msprop:Generator_ColumnVarNameInTable="columnSellerGiveUpComm" msprop:Generator_ColumnPropNameInTable="SellerGiveUpCommColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SellerRef" msprop:Generator_UserColumnName="SellerRef" msprop:Generator_ColumnPropNameInRow="SellerRef" msprop:Generator_ColumnVarNameInTable="columnSellerRef" msprop:Generator_ColumnPropNameInTable="SellerRefColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerTrdType" msprop:Generator_UserColumnName="SellerTrdType" msprop:Generator_ColumnPropNameInRow="SellerTrdType" msprop:Generator_ColumnVarNameInTable="columnSellerTrdType" msprop:Generator_ColumnPropNameInTable="SellerTrdTypeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerCompTradeType" msprop:Generator_UserColumnName="SellerCompTradeType" msprop:Generator_ColumnPropNameInRow="SellerCompTradeType" msprop:Generator_ColumnVarNameInTable="columnSellerCompTradeType" msprop:Generator_ColumnPropNameInTable="SellerCompTradeTypeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SellerTotalLeg" msprop:Generator_UserColumnName="SellerTotalLeg" msprop:Generator_ColumnPropNameInRow="SellerTotalLeg" msprop:Generator_ColumnVarNameInTable="columnSellerTotalLeg" msprop:Generator_ColumnPropNameInTable="SellerTotalLegColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BuyerTrdType" msprop:Generator_UserColumnName="BuyerTrdType" msprop:Generator_ColumnPropNameInRow="BuyerTrdType" msprop:Generator_ColumnVarNameInTable="columnBuyerTrdType" msprop:Generator_ColumnPropNameInTable="BuyerTrdTypeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerInvGiveUpCode" msprop:Generator_UserColumnName="BuyerInvGiveUpCode" msprop:Generator_ColumnPropNameInRow="BuyerInvGiveUpCode" msprop:Generator_ColumnVarNameInTable="columnBuyerInvGiveUpCode" msprop:Generator_ColumnPropNameInTable="BuyerInvGiveUpCodeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerGiveUpComm" msprop:Generator_UserColumnName="BuyerGiveUpComm" msprop:Generator_ColumnPropNameInRow="BuyerGiveUpComm" msprop:Generator_ColumnVarNameInTable="columnBuyerGiveUpComm" msprop:Generator_ColumnPropNameInTable="BuyerGiveUpCommColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BuyerCompTradeType" msprop:Generator_UserColumnName="BuyerCompTradeType" msprop:Generator_ColumnPropNameInRow="BuyerCompTradeType" msprop:Generator_ColumnVarNameInTable="columnBuyerCompTradeType" msprop:Generator_ColumnPropNameInTable="BuyerCompTradeTypeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BuyerRef" msprop:Generator_UserColumnName="BuyerRef" msprop:Generator_ColumnPropNameInRow="BuyerRef" msprop:Generator_ColumnVarNameInTable="columnBuyerRef" msprop:Generator_ColumnPropNameInTable="BuyerRefColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TradeVersion" msprop:Generator_UserColumnName="TradeVersion" msprop:Generator_ColumnPropNameInRow="TradeVersion" msprop:Generator_ColumnVarNameInTable="columnTradeVersion" msprop:Generator_ColumnPropNameInTable="TradeVersionColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="BuyTotLeg" msprop:Generator_UserColumnName="BuyTotLeg" msprop:Generator_ColumnPropNameInRow="BuyTotLeg" msprop:Generator_ColumnVarNameInTable="columnBuyTotLeg" msprop:Generator_ColumnPropNameInTable="BuyTotLegColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="CreatedBy" msprop:Generator_UserColumnName="CreatedBy" msprop:Generator_ColumnPropNameInRow="CreatedBy" msprop:Generator_ColumnVarNameInTable="columnCreatedBy" msprop:Generator_ColumnPropNameInTable="CreatedByColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SessionId" msprop:Generator_UserColumnName="SessionId" msprop:Generator_ColumnPropNameInRow="SessionId" msprop:Generator_ColumnVarNameInTable="columnSessionId" msprop:Generator_ColumnPropNameInTable="SessionIdColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RawTradeFeedSimulation" />
+      <xs:field xpath="mstns:ExchangeId" />
+      <xs:field xpath="mstns:TradeFeedIDSimulation" />
+      <xs:field xpath="mstns:TradeFeedID" />
+      <xs:field xpath="mstns:BusinessDate" />
+      <xs:field xpath="mstns:SessionId" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="Default.aspx" title="Home"  description="">
+
+    <!-- For Clearing And Settlement-->
+    <siteMapNode url="" title="Clearing and Settlement"  description="">
+
+      <!-- For Clearing And Settlement Parameter -->
+      <siteMapNode url="" title="Parameter"  description="">
+
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewComodity.aspx" title="View Commodity"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/MasterData/EntryCommodity.aspx" title="Manage Commodity"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewManageExchange.aspx" title="View Exchange"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/MasterData/EntryManageExchange.aspx" title="Manage Exchange"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewManageHoliday.aspx" title="View Holiday"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/MasterData/EntryManageHoliday.aspx" title="Manage Holiday"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewExchangeRate.aspx" title="View Exchange Rate"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/MasterData/EntryExchangeRate.aspx" title="Manage Exchange Rate"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewManageProduct.aspx" title="View Product"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/MasterData/EntryProduct.aspx" title="Manage Product"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewGlobalParamater.aspx" title="View Global Parameter"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/MasterData/EntryGlobalParameter.aspx" title="Manage Global Parameter"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewIRCA.aspx" title="View IRCA"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/MasterData/EntryIRCA.aspx" title="Manage IRCA"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewContract.aspx" title="View Contract"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/MasterData/EntryContract.aspx" title="Manage Contract"  description=""/>
+        </siteMapNode>
+
+      </siteMapNode>
+
+      <!-- For TradeFeed -->
+      <siteMapNode url="" title="Trade Register"  description="">
+
+        <siteMapNode url="~/ClearingAndSettlement/TradeFeed/ViewTradeFeed.aspx" title="View Trade Register"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/TradeFeed/EntryTradeFeed.aspx" title="Manage Trade Register"  description=""/>
+          <siteMapNode url="~/ClearingAndSettlement/TradeFeed/ImportTradeFeed.aspx" title="Import Trade Register"  description=""/>
+          <siteMapNode url="~/ClearingAndSettlement/TradeFeed/ImportTradeFeedSimulation.aspx" title="Import Trade Register Simulation"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/TradeFeed/ViewTradeFeedException.aspx" title="View Trade Register Exception"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/TradeFeed/EntryTradeFeedException.aspx" title="Manage Trade Register Exception"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/TradeFeed/ViewTradeFeedAdjustment.aspx" title="View Trade Register Adjustment"  description=""/>
+
+      </siteMapNode>
+
+      <!-- For Settlement Process -->
+      <siteMapNode url="" title="Settlement Process"  description="">
+
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewSettlementPrice.aspx" title="View Settlement Price"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/MasterData/EntrySettlementPrice.aspx" title="Manage Settlement Price"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/ExecuteEOD.aspx" title="Execute End of Day"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/StartOfDay.aspx" title="Start of Day"  description=""/>
+
+        <siteMapNode url="~/ClearingAndSettlement/DueDateSettlement.aspx" title="Due Date Settlement"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/PublishReport2.aspx" title="Publish Report"  description=""/>
+      </siteMapNode>
+
+      <!-- For Settlement Process -->
+      <siteMapNode url="" title="Report EOD"  description="">
+
+        <siteMapNode url="~/ClearingAndSettlement/ReportEOD/RptClearingMember.aspx" title="Report Clearing Member"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ReportEOD/RptAllClearingMember.aspx" title="Report All Clearing Member"  description=""/>
+
+      </siteMapNode>
+
+      <!-- For View Report -->
+      <siteMapNode url="" title="View Report"  description="">
+
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptAccountBalance.aspx" title="View Report Account Balance"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptClearingMemberTransactionAll.aspx" title="View Report Clearing Member Transaction All"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptClearingMemberTransaction.aspx" title="View Report Clearing Member Transaction"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptClearingMemberTransactionByQuery.aspx" title="View Report Clearing Member Transaction by Query"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptCurrentFinancialStatement.aspx" title="View Report Current Financial Statement"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptCurrentMarginSummary.aspx" title="View Report Current Margin Summary"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptOpenInterestListing.aspx" title="View Report Open Interest Listing"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptIRCA.aspx" title="View Report IRCA Listing"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptClearingMemberCollateral.aspx" title="View Report Clearing Member Collateral"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptCurrentCMTradeRegistryListing.aspx" title="View Report Current Clearing Member Trade Registry Listing"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptCurrentCHTradeRegistry.aspx" title="View Report Current Clearing House Trade Registry Listing"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptClosedPositionHistoryListing.aspx" title="View Report Closed Position History Listing"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptNotaRequestTender.aspx" title="View Report Nota Request Tender"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewClearingMember/ViewRptTenderExchangeAnnouncement.aspx" title="View Report Tender Exchange Announcement"  description=""/>
+        
+        <siteMapNode url="~/ClearingAndSettlement/ViewReport/RptSellerAllocation.aspx" title="Seller Allocation"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewReport/RptFinancialInfo.aspx" title="Financial Info"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewReport/RptTradeProgress.aspx" title="Trade Progress"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/ViewReport/RptSellerAllocationFinancial.aspx" title="Seller Allocation Financial"  description=""/>
+      </siteMapNode>
+
+
+      <!-- For Transfer Position -->
+      <siteMapNode url="" title="Transfer Position"  description="">
+
+        <siteMapNode url="~/ClearingAndSettlement/TransferPosition/ViewTransferApproval.aspx" title="View Transfer Approval"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/TransferPosition/EntryTransferApproval.aspx" title="Manage Transfer Approval"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/ClearingAndSettlement/TransferPosition/ViewBulkTransfer.aspx" title="View Bulk Transfer"  description=""/>
+        <siteMapNode url="~/ClearingAndSettlement/TransferPosition/ViewBulkTransferSPA.aspx" title="View Bulk Transfer SPA"  description=""/>
+
+      </siteMapNode>
+
+      <!-- For Tender -->
+      <siteMapNode url="" title="Tender"  description="">
+
+        <siteMapNode url="~/ClearingAndSettlement/Tender/ViewTenderApproval.aspx" title="View Tender Approval"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/Tender/EntryTenderApproval.aspx" title="Manage Tender Approval"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/Tender/RandomizedTender.aspx" title="View Randomized Tender"  description="">
+          <siteMapNode url="~/ClearingAndSettlement/Tender/RandomizedTenderDetail.aspx" title="Randomized Tender Detail"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/ClearingAndSettlement/Tender/ViewDeliveryListing.aspx" title="View Delivery Listing"  description=""/>
+
+      </siteMapNode>
+
+    </siteMapNode>
+
+    <!-- For Risk Management -->
+    <siteMapNode url="" title="Risk Management"  description="">
+
+      <!-- For Collateral -->
+      <siteMapNode url="~/RiskManagement/MasterData/ViewCollateral.aspx" title="View Collateral"  description="">
+        <siteMapNode url="~/RiskManagement/MasterData/EntryCollateral.aspx" title="Manage Collateral"  description=""/>
+      </siteMapNode>
+
+
+      <!-- For Risk Analysis -->
+      <siteMapNode url="" title="Risk Analysis"  description="">
+
+        <siteMapNode url="~/RiskManagement/ViewStressTestScenario.aspx" title="View Stress Test Scenario"  description="">
+          <siteMapNode url="~/RiskManagement/EntryStressTestScenario.aspx" title="Manage Stress Test Scenario"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/RiskManagement/ViewRiskProfile.aspx" title="View Risk Profile"  description="">
+          <siteMapNode url="~/RiskManagement/EntryRiskProfile.aspx" title="Manage Risk Profile"  description=""/>
+        </siteMapNode>
+
+      </siteMapNode>
+
+      <!-- For View Report-->
+      <siteMapNode url="" title="View Report"  description="">
+
+        <siteMapNode url="~/RiskManagement/ViewReport/ViewRptSummaryMonitorMargin.aspx" title="View Report Summary Monitor Margin"  description=""/>
+        <siteMapNode url="~/RiskManagement/ViewReport/ViewRptMonitorMarginErosion.aspx" title="View Report Monitor Margin Erosion"  description=""/>
+        <siteMapNode url="~/RiskManagement/ViewReport/ViewRptMonitorOpenInterest.aspx" title="View Report Monitor Open Interest"  description=""/>
+        <siteMapNode url="~/RiskManagement/ViewReport/ViewRptMonitorTransactionStatistic.aspx" title="View Report Monitor Transaction Statistic"  description=""/>
+        <siteMapNode url="~/RiskManagement/ViewReport/ViewRptDailyShortageSummary.aspx" title="View Report Daily Shortage Summary"  description=""/>
+        <siteMapNode url="~/RiskManagement/ViewReport/ViewRptClearingMemberLS.aspx" title="View Clearing Member Limit/Suspend"  description=""/>
+        <siteMapNode url="~/RiskManagement/ViewReport/ViewRptClearingMemberR.aspx" title="View Clearing Member Release"  description=""/>
+        <siteMapNode url="~/RiskManagement/ViewReport/ViewRptClearingHouseSuspensionCommand.aspx" title="View Clearing Member Release"  description=""/>
+
+      </siteMapNode>
+
+      <!-- For Parameter -->
+      <siteMapNode url="" title="Parameter"  description="">
+
+        <siteMapNode url="~/RiskManagement/MasterData/ViewRiskType.aspx" title="View Risk Type"  description="">
+          <siteMapNode url="~/RiskManagement/MasterData/EntryRiskType.aspx" title="Manage Risk Type"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/RiskManagement/MasterData/ViewRiskTypeColor.aspx" title="View Risk Type Color"  description=""/>
+
+      </siteMapNode>
+      <siteMapNode url="~/RiskManagement/ClearingMemberSetStatus.aspx" title="Clearing Member Set Status"  description=""/>
+      <siteMapNode url="~/RiskManagement/EntryManageParameterForAutoSuspension.aspx" title="Manage Parameter For Auto Suspension"  description=""/>
+
+    </siteMapNode>
+
+    <!-- For Finance And Accounting -->
+    <siteMapNode url="" title="Finance And Accounting"  description="">
+
+      <!-- For Bank Transaction -->
+      <siteMapNode url="" title="Bank Transaction"  description="">
+
+        <siteMapNode url="~/FinanceAndAccounting/ViewBankTransactionException.aspx" title="View Bank Transaction Exception"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/EntryBankTransactionException.aspx" title="Manage Bank Transaction Exception"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/FinanceAndAccounting/ViewBankTransaction.aspx" title="View Bank Transaction"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/EntryBankTransaction.aspx" title="Manage Bank Transaction"  description=""/>
+        </siteMapNode>
+
+      </siteMapNode>
+
+      <!-- For Posting -->
+      <siteMapNode url="" title="Posting"  description="">
+
+        <siteMapNode url="~/FinanceAndAccounting/Posting/ViewManualPosting.aspx" title="View Manual Posting"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/Posting/EntryManualPosting.aspx" title="Manage Manual Posting"  description=""/>
+        </siteMapNode>
+
+      </siteMapNode>
+
+      <!-- For View Report -->
+      <siteMapNode url="" title="View Report"  description="">
+
+        <siteMapNode url="~/FinanceAndAccounting/ViewReport/ViewRptSummaryActivityClearingMemberPeriod.aspx" title="View Report Summary Activity Clearing Member Period"  description=""/>
+
+      </siteMapNode>
+
+      <!-- For Parameter -->
+      <siteMapNode url="" title="Parameter"  description="">
+
+        <siteMapNode url="~/FinanceAndAccounting/ViewManagePostingGroup.aspx" title="View Posting Group"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/EntryManagePostingGroup.aspx" title="Manage Posting Group"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/FinanceAndAccounting/ViewManagePostingCode.aspx" title="View Posting Code"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/EntryManagePostingCode.aspx" title="Manage Posting Code"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/FinanceAndAccounting/Parameter/ViewBankPDM.aspx" title="View Bank PDM"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/Parameter/EntryBankPDM.aspx" title="Manage Bank PDM"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/FinanceAndAccounting/Parameter/ViewManageBankAccount.aspx" title="View Bank Account"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/Parameter/EntryManageBankAccount.aspx" title="Manage Bank Account"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/FinanceAndAccounting/Parameter/ViewManageTransactionFee.aspx" title="View Manage Transaction Fee"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/Parameter/EntryManageTransactionFee.aspx" title="Manage Transaction Fee"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/FinanceAndAccounting/Parameter/ViewManageTransactionFeePrimer.aspx" title="View Manage Transaction Fee Primer"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/Parameter/EntryManageTransactionFeePrimer.aspx" title="Manage Transaction Fee Primer"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/FinanceAndAccounting/Parameter/ViewManageTransactionFeeSPA.aspx" title="View Manage Transaction Fee SPA"  description="">
+          <siteMapNode url="~/FinanceAndAccounting/Parameter/EntryManageTransactionFeeSPA.aspx" title="Manage Transaction Fee SPA"  description=""/>
+        </siteMapNode>
+
+      </siteMapNode>
+
+
+    </siteMapNode>
+
+    <!-- For Planning And Development -->
+    <siteMapNode url="" title="Planning And Development"  description="">
+
+      <!-- For Member Management -->
+      <siteMapNode url="" title="Member Management"  description="">
+
+        <siteMapNode url="~/PlanningAndDevelopment/MemberManagement/ViewClearingMember.aspx" title="View Clearing Member"  description="">
+          <siteMapNode url="~/PlanningAndDevelopment/MemberManagement/EntryClearingMember.aspx" title="Entry Clearing Member"  description=""/>
+        </siteMapNode>
+        <siteMapNode url="~/PlanningAndDevelopment/MemberManagement/ViewInvestor.aspx" title="View Investor"  description=""/>
+
+        <siteMapNode url="" title="Report"  description="">
+
+        </siteMapNode>
+      </siteMapNode>
+
+      <!-- For Discipline Management-->
+      <siteMapNode url="" title="Discipline Management"  description="">
+
+        <siteMapNode url="~/PlanningAndDevelopment/DisciplineManagement/ViewDisiplinAK.aspx" title="View Discipline AK"  description="">
+          <siteMapNode url="~/PlanningAndDevelopment/DisciplineManagement/EntryDisiplinAK.aspx" title="Manage Discipline AK"  description=""/>
+        </siteMapNode>
+
+      </siteMapNode>
+
+    </siteMapNode>
+
+    <!-- For Audit And Compliance -->
+    <siteMapNode url="" title="Audit And Compliance"  description="">
+
+      <siteMapNode url="~/AuditAndCompliance/ViewApplicationLog.aspx" title="View Application Log"  description="">
+        <siteMapNode url="~/AuditAndCompliance/DetailApplicationLog.aspx" title="Detail Application Log"  description=""/>
+      </siteMapNode>
+
+      <siteMapNode url="~/AuditAndCompliance/ViewAuditTrailData.aspx" title="View Audit Trail Data"  description="">
+        <siteMapNode url="~/AuditAndCompliance/DetailAuditTrailData.aspx" title="Detail Audit Trail Data"  description=""/>
+      </siteMapNode>
+
+      <siteMapNode url="~/AuditAndCompliance/ViewTradeFeedProxyLog.aspx" title="View TradeFeed Proxy Log"  description=""/>
+
+    </siteMapNode>
+
+    <!-- For Decision Support System -->
+    <siteMapNode url="" title="Decision Support System"  description="">
+
+      <siteMapNode url="~/DecisionSupportSystem/ViewReport/ViewRptClearingMemberProfitLoss.aspx" title="View Report Clearing Member Profit Loss"  description=""/>
+      <siteMapNode url="~/DecisionSupportSystem/ViewReport/ViewRptClearingMemberTopGainer.aspx" title="View Report Clearing Member Top Gainer"  description=""/>
+      <siteMapNode url="~/DecisionSupportSystem/ViewReport/ViewRptClearingMemberTopLoser.aspx" title="View Report Clearing Member Top Loser"  description=""/>
+      <siteMapNode url="~/DecisionSupportSystem/ViewReport/ViewRptInvestorTopGainer.aspx" title="View Report Investor Top Gainer"  description=""/>
+      <siteMapNode url="~/DecisionSupportSystem/ViewReport/ViewRptInvestorTopLoser.aspx" title="View Report Investor Top Loser"  description=""/>
+      <siteMapNode url="~/DecisionSupportSystem/ViewReport/ViewRptException.aspx" title="View Report Exception"  description=""/>
+      <siteMapNode url="~/DecisionSupportSystem/ViewReport/ViewRptCashOutExcess.aspx" title="View Report Cash Out Excess"  description=""/>
+
+
+    </siteMapNode>
+
+    <!-- For Business Inteligence -->
+    <siteMapNode url="" title="Business Inteligence"  description="">
+
+      <siteMapNode url="~/BusinessInteligence/ViewReport/ViewRptSummaryMarginSummary.aspx" title="View Report Summary Margin Summary"  description=""/>
+      <siteMapNode url="~/BusinessInteligence/ViewReport/ViewRptSettlementPriceMovement.aspx" title="View Report Settlement Price Movement"  description=""/>
+
+    </siteMapNode>
+
+    <!-- For Administration -->
+    <siteMapNode url="" title="Administration"  description="">
+
+
+      <siteMapNode url="" title="User Management"  description="">
+
+        <siteMapNode url="~/Administration/UserManagement/ViewUser.aspx" title="View User"  description="">
+          <siteMapNode url="~/Administration/UserManagement/EntryUser.aspx" title="Manage User"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/Administration/UserManagement/ViewRole.aspx" title="View Group"  description="">
+          <siteMapNode url="~/Administration/UserManagement/EntryRole.aspx" title="Manage Group"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/Administration/UserManagement/ViewAccessPage.aspx" title="View Access Page"  description="">
+          <siteMapNode url="~/Administration/UserManagement/EntryAccessPage.aspx" title="Manage Access Page"  description=""/>
+        </siteMapNode>
+
+      </siteMapNode>
+
+      <siteMapNode url="" title="Event Management"  description="">
+
+        <siteMapNode url="~/Administration/EventManagement/ViewEventLog.aspx" title="View Event Log"  description="">
+          <siteMapNode url="~/Administration/EventManagement/DetailEventLog.aspx" title="Detail Event Log"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/Administration/EventManagement/ViewEventReceipientList.aspx" title="View Event Receipient List"  description="">
+          <siteMapNode url="~/Administration/EventManagement/EntryEventReceipientList.aspx" title="Manage Event Receipient List"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/Administration/EventManagement/ViewEventRecipient.aspx" title="View Event Receipient"  description="">
+          <siteMapNode url="~/Administration/EventManagement/EntryEventRecipient.aspx" title="Manage Event Receipient"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/Administration/EventManagement/ViewEventType.aspx" title="View Event Type"  description="">
+          <siteMapNode url="~/Administration/EventManagement/EntryEventType.aspx" title="Manage Event Type"  description=""/>
+        </siteMapNode>
+
+        <siteMapNode url="~/ClearingAndSettlement/MasterData/ViewManageBroadcast.aspx" title="View Broadcast"  description=""/>
+        <siteMapNode url="~/Administration/EventManagement/EntryManageBroadcast.aspx" title="Manage Broadcast"  description=""/>
+
+      </siteMapNode>
+
+
+    </siteMapNode>
+
+    <!-- For Profile -->
+    <siteMapNode url="" title="Profile"  description="">
+
+      <siteMapNode url="~/ViewInbox.aspx" title="Inbox"  description=""/>
+      <siteMapNode url="~/ChangePassword.aspx" title="Change Password"  description=""/>
+
+    </siteMapNode>
+
+  </siteMapNode>
+</siteMap>
